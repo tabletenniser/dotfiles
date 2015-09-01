@@ -166,7 +166,7 @@ nnoremap <silent> <F9> :YRShow<CR>
 
 imap jk <Esc>
 
-map <S-h> :join<CR>
+map <S-s> :join<CR>
 map <S-j> 5j
 map <S-k> 5k
 
@@ -540,6 +540,14 @@ au! FileType python setl nosmartindent
 
 " Always hide the status line
 set laststatus=2
+
+" Enable spell checking
+set spell spelllang=en_us
+" Fix mis-spelled word with <leader>f
+nnoremap <leader>f 1z=
+" Toggle spell check with <leader>f
+nnoremap <leader>s :set spell!
+
 
 
 
