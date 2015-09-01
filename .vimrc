@@ -164,7 +164,7 @@ imap <silent> <F6> <Esc>:tabn<CR>i
 
 nnoremap <silent> <F9> :YRShow<CR>
 
-imap jj <Esc>
+imap jk <Esc>
 
 map <S-h> :join<CR>
 map <S-j> 5j
