@@ -1,78 +1,78 @@
-" Some general instructions:
+" ==============================================================
+" General instructions:
 " - Requires `vundle` (https://github.com/gmarik/vundle)
-" - Run `:BundleInstall` on first run.
-" Critical Configurations
-" =======================
+" - Run `:PluginInstall` on first run, use `:PluginList` to see what is
+"   available
+"
+" Table of Contents:
+"	--> VUNDLE_PLUGINS
+"		* CTRLP_CONFIG
+"		* TAGBAR_CONFIG
+" ==============================================================
 ">Terminal Colours
 set t_Co=256
-
-">Vundle Setup Requirementns
-set nocompatible
-"filetype on
-filetype off
-
 ">Leader Key
 let mapleader = ","
 
-
-">Vundle Bundles
-" ==============
+" ==============================================================
+"                     VUNDLE_PLUGINS
+" ==============================================================
+" +++++++++++++ Vundle Setup Requirements +++++++++++++
+set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 Plugin 'gmarik/Vundle.vim'
-":PluginInstall: install new plugs
-":PluginList: list of plugins
 
-">Languages and Syntax
-Bundle 'othree/html5.vim'
+" +++++++++++++++ Languages and Syntax +++++++++++++++
 "HTML syntax highlight
-Bundle 'vim-stylus'
+Bundle 'othree/html5.vim'
 "html & css stylus update
-Bundle 'coot/atp_vim'
+Bundle 'vim-stylus'
 "Automatic Tex Plugin
-Bundle 'tpope/vim-endwise'
+Bundle 'coot/atp_vim'
 "For brackets auto-completion
-"Bundle 'fatih/vim-go'
+Bundle 'tpope/vim-endwise'
 "For Go programming language
-Bundle 'mattn/emmet-vim'
+"Bundle 'fatih/vim-go'
 "Expand abbreviation, <c-y>,: activate; div>p#id$*3>a; select text + <c-y>,
 "+ ul>li*
 "<c-y>A: quote in HTML; <c-y>k: remove an HTML tag
-" Bundle 'davidhalter/jedi-vim'
+Bundle 'mattn/emmet-vim'
 "For Python autocomplete
+" Bundle 'davidhalter/jedi-vim'
 
-">UI Upgrades
-Bundle 'majutsushi/tagbar'
+" ++++++++++++++ UI Upgrades ++++++++++++++
 "F4: toggle summary view; ctags -R: allows <c-]> to go to definition.
 "<c-T> to go back to previous location. used with exuberant ctags.
-Bundle 'scrooloose/nerdtree'
+Bundle 'majutsushi/tagbar'
 "F2: toggle directory view; o: open file; i: open split;
 "t/T: open in new tab (silently); s: open vsplit
 "cd: change pwd to that directory; C: change root to selected dir;
 "Bookmark <haha>; B: toggle bookmark view
-Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
 "syntax check upon save/exit
-Bundle "myusuf3/numbers.vim"
+Bundle 'scrooloose/syntastic'
 "F3: toggle numbers
+Bundle "myusuf3/numbers.vim"
+"<leader>+u to show list of history undos
 Bundle 'sjl/gundo.vim'
-"\u to show list of history undos
-Bundle 'bling/vim-airline'
 "status line at the bottom
-Bundle 'kien/ctrlp.vim'
+Bundle 'bling/vim-airline'
 "vague search, remapped to '\+p'
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'kien/ctrlp.vim'
 "solarized color scheme
-Bundle "flazz/vim-colorschemes"
+Bundle 'altercation/vim-colors-solarized'
 "~500 schemes, use colorscheme to set
+Bundle "flazz/vim-colorschemes"
 
-">Editing Upgrades
+" ++++++++++++++ Editing Upgrades ++++++++++++++
 Bundle 'YankRing.vim'
 "F9: toggle yank history. ctrl+p/n: last/previous yank
 Bundle 'easymotion/vim-easymotion'
 "s: search in both dir; <leader>j/k: multiple lines up/down
 Bundle 'tomtom/tcomment_vim'
-" gcc or <c-_><c-_>: comment / uncomment a line; gc: comment selected block.
+"gcc or <c-_><c-_>: comment / uncomment a line; gc: comment selected block.
 Bundle 'Raimondi/delimitMate'
 "Auto close quotes / brackets
 Bundle 'tpope/vim-surround'
@@ -94,7 +94,7 @@ Bundle 'simplyzhao/cscope_maps.vim'
 "nmap <leader>a :tab split<CR>:Ack ''<left>
 "nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 
-">Misc Upgrades
+" ++++++++++++++ Misc Upgrades ++++++++++++++
 " Bundle 'tpope/vim-fugitive'
 " Bundle 'mattn/gist-vim'
 "To create gist: a simple way to share snippets.
@@ -103,19 +103,17 @@ Bundle 'simplyzhao/cscope_maps.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-"================ CONTROL-P VARS ===================
+"================ CTRLP_CONFIG ===================
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
-
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
 
-
-"=============== TAGBAR VARS =======================
+"=============== TAGBAR_CONFIG =======================
 "let g:tagbar_ctags_bin='/usr/bin/'  " Proper Ctags locations
-let g:tagbar_width=26                          " Default is 40, seems too wide
+let g:tagbar_width=26                " Default is 40, seems too wide
 let g:tagbar_type_go = {  
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [
@@ -164,7 +162,10 @@ imap <silent> <F6> <Esc>:tabn<CR>i
 
 nnoremap <silent> <F9> :YRShow<CR>
 
-imap jk <Esc>
+inoremap <esc> <nop>
+inoremap jk <Esc>
+vnoremap <esc> <nop>
+vnoremap jk <Esc>
 
 map <S-s> :join<CR>
 map <S-j> 5j
@@ -367,33 +368,25 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 nnoremap <silent> <leader>u :GundoToggle<cr>
 
 " Other Mappings
-
 " Force save read only files.
 " cnoremap w!! %!sudo tee > /dev/null %
-
 " Clears highlighting.
-" nnoremap <leader><space> :noh<cr>
-
+nnoremap <leader><space> :set hlsearch!<cr>
 " Reselect visual block after indent/outdent
-" vnoremap < <gv
-" vnoremap > >gv
-
+vnoremap < <gv
+vnoremap > >gv
 " Disable shift + K opening man pages.
 " nnoremap <s-k> <nop>
-
 " Don't need shift for commands.
-" nnoremap ; :
-" vnoremap ; :
-
+nnoremap ; :
+vnoremap ; :
 " Leader to reselect pasted
 " nnoremap <leader>v V`]
-
 " Remap split window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
 " Fix save typos.
 :ca WQ wq
 :ca Wq wq
@@ -402,154 +395,132 @@ nnoremap <C-l> <C-w>l
 :ca W w
 :ca Q q
 
-" Leader to toggle list chars
-nnoremap <leader>l :set list!<cr>
-
-
 " Misc Settings
 " =============
-
 " Remember 700 lines of history.
 set history=700
-
 " Allow per project vimrc
 set exrc
 set secure
-
-" Enable filetype plugin and indent files
-filetype plugin on
-filetype indent on
-
-" Disable modelines (security exploits)
-" set modelines=0
-
+" Disable modelines (prevent security exploits)
+set modelines=0
 " Show line with cursor
 set cursorline
-
 " Fast terminal
-" set ttyfast
-
+set ttyfast
 " Set to auto read when a file is changed from the outside
-" set autoread
-
-" Speed up <shift>O
-set timeoutlen=500
+set autoread
+" Speed up <shift>O, waiting time between multiple key input.
+set timeoutlen=400
 set ttimeoutlen=50
-
 " Better copy and paste
 " set pastetoggle=<F2>
 " set clipboard=unnamed
-
 " Add mouse scrolling.
 set mouse=a
-
 " Start scrolling 5 lines before the top/bottom
 set scrolloff=10
-
-
-
-
-
-
-
 " Turn on enhanced completions, and set completion options
-" set wildmenu
+set wildmenu
 set wildmode=list:longest
 set completeopt=menuone,longest
-
 " Command bar height
 set cmdheight=2
-
 " Change buffers without saving (allow hidden buffers).
 set hidden
-
 " Set backspace config
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-
 " Ignore case when searching
 set ignorecase
 set smartcase
-
 " Highlight search results
 set hlsearch
-
 " Make search act like in modern browsers
 set incsearch
-
-" Default global substitution
-" set gdefault
-
 " Do not redraw when executing macros
 set nolazyredraw
-
-" Magic for reuglar expressions
+" Magic for regular expressions
 set magic
-
 " Show matching bracket indicator when text indicator is over them
 set showmatch
 set matchtime=2
-
 " No sound on errors
 set noerrorbells
 set visualbell
 set t_vb=
-
 " Attempt to turn on encoding
 set encoding=utf8
 try
   lang en_US
 catch
 endtry
-
 " Show the line number
 set number
-
 " Enable syntax highlighting
 syntax enable
-
 " Set invisible characters
 set listchars=eol:¬,tab:▸·,trail:·
-
 " Turn backup off (mostly using git, etc anyway)
 set nobackup
 set nowb
 set noswapfile
-
 " Tab settings
-set noexpandtab
+set noexpandtab   " Set expandtab to enable \t
 set smarttab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
+" List settings
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
+" Leader to toggle list chars
+nnoremap <leader>l :set list!<cr>
 
+" Format settings
 set linebreak
 set textwidth=0
 set colorcolumn=100
 set wrap
-
-" Format options
 set formatoptions=qrn1
-
+" enable UNDO even after closing and reopening the file.
+set undofile
 " Indentation settings
 set autoindent
 set smartindent
 au! FileType python setl nosmartindent 
-
 " Always hide the status line
 set laststatus=2
-
 " Enable spell checking
 set spell spelllang=en_us
+
 " Fix mis-spelled word with <leader>f
 nnoremap <leader>f 1z=
 " Toggle spell check with <leader>f
-nnoremap <leader>s :set spell!
+nnoremap <leader>s :set spell!<cr>
 
+" use tab to go to matching brackets.
+nnoremap <tab> %
+vnoremap <tab> %
 
+" Arrows are unvimlike 
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+" " Miscellaneous 
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 
+" Automatically save all files when losing focus.
+au FocusLost * :wa
+" Go to the last modified location.
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CSCOPE settings for vim           
@@ -557,14 +528,6 @@ nnoremap <leader>s :set spell!
 "
 " This file contains some boilerplate settings for vim's cscope interface,
 " plus some keyboard mappings that I've found useful.
-"
-" USAGE: 
-" -- vim 6:     Stick this file in your ~/.vim/plugin directory (or in a
-"               'plugin' directory in some other directory that is in your
-"               'runtimepath'.
-"
-" -- vim 5:     Stick this file somewhere and 'source cscope.vim' it from
-"               your ~/.vimrc file (or cut and paste it into your .vimrc).
 "
 " NOTE: 
 " These key maps use multiple keystrokes (2 or 3 keys).  If you find that vim
@@ -575,8 +538,6 @@ nnoremap <leader>s :set spell!
 "
 " Jason Duell       jduell@alumni.princeton.edu     2002/3/7
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
 " This tests to see if vim was configured with the '--enable-cscope' option
 " when it was compiled.  If it wasn't, time to recompile vim... 
 if has("cscope")

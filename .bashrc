@@ -22,10 +22,12 @@ function findall(){
 
 #export -f findall
 
-
 export CLICOLOR=:1
 
-
+alias grep='grep -Hn --color'
 alias la='ls -A'
-alias l='ls -l'
+alias l='ls -lAh'
+alias so='source'
+alias vl='vim -c "normal '\''0"'    # vl to open last file opened in vim.
 #ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
+pwd
