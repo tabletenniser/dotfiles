@@ -420,6 +420,12 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 " Fix save typos.
 :ca qw wq
+:ca WQ wq
+:ca Wq wq
+:ca QA qa
+:ca Qa qa
+" :ca W w
+:ca Q q
 " :W sudo saves the file (useful for handling the permission-denied error)
 command! W w !sudo tee % > /dev/null
 " Useful mappings for managing tabs
