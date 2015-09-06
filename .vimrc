@@ -1,4 +1,4 @@
-" ==============================================================
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General instructions:
 " - Requires `vundle` (https://github.com/gmarik/vundle)
 " - Run `:PluginInstall` on first run, use `:PluginList` to see what is
@@ -8,23 +8,23 @@
 "	--> VUNDLE_PLUGINS
 "		* CTRLP_CONFIG
 "		* TAGBAR_CONFIG
-" ==============================================================
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ">Terminal Colours
 set t_Co=256
 ">Leader Key
 let mapleader = ","
 
-" ==============================================================
-"                     VUNDLE_PLUGINS
-" ==============================================================
-" +++++++++++++ Vundle Setup Requirements +++++++++++++
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                          VUNDLE_PLUGINS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ++++++++++++++++++++ Vundle Setup Requirements ++++++++++++++++++++
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-" +++++++++++++++ Languages and Syntax +++++++++++++++
+" ++++++++++++++++++++ Languages and Syntax ++++++++++++++++++++
 "HTML syntax highlight
 Bundle 'othree/html5.vim'
 "html & css stylus update
@@ -41,8 +41,10 @@ Bundle 'tpope/vim-endwise'
 Bundle 'mattn/emmet-vim'
 "For Python autocomplete
 " Bundle 'davidhalter/jedi-vim'
+" Plugin from http://vim-scripts.org/vim/scripts.html; highlight parenthesis.
+Plugin 'rainbow_parentheses.vim'
 
-" ++++++++++++++ UI Upgrades ++++++++++++++
+" ++++++++++++++++++++ UI Upgrades ++++++++++++++++++++
 "F4: toggle summary view; ctags -R: allows <c-]> to go to definition.
 "<c-T> to go back to previous location. used with exuberant ctags.
 Bundle 'majutsushi/tagbar'
@@ -62,11 +64,11 @@ Bundle 'bling/vim-airline'
 "vague search, remapped to '\+p'
 Bundle 'kien/ctrlp.vim'
 "solarized color scheme
-Bundle 'altercation/vim-colors-solarized'
+" Bundle 'altercation/vim-colors-solarized'
 "~500 schemes, use colorscheme to set
 Bundle "flazz/vim-colorschemes"
 
-" ++++++++++++++ Editing Upgrades ++++++++++++++
+" ++++++++++++++++++++ Editing Upgrades ++++++++++++++++++++
 Bundle 'YankRing.vim'
 "F9: toggle yank history. ctrl+p/n: last/previous yank
 Bundle 'easymotion/vim-easymotion'
@@ -76,6 +78,7 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'Raimondi/delimitMate'
 "Auto close quotes / brackets
 Bundle 'tpope/vim-surround'
+"ys to add surrounding quotes/tags; ysiw*: surround word with *
 "viwS': surround the word with quote; cs'"/ds': change/delete surrounding
 "viwStem: surround with <em>; cs"tem: change surrounding tag to <em>
 Bundle 'shougo/neocomplete'
@@ -88,13 +91,14 @@ Bundle 'simplyzhao/cscope_maps.vim'
 "Bundle 'terryma/vim-multiple-cursors'
 "lustyExplorer
 "Search inside open buffer; map to <leader>/
+"nnoremap <leader>/ :Ack
 "ack.vim
 "Ack 'word' folder: find words in folders;
 "let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 "nmap <leader>a :tab split<CR>:Ack ''<left>
 "nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 
-" ++++++++++++++ Misc Upgrades ++++++++++++++
+" ++++++++++++++++++++ Misc Upgrades ++++++++++++++++++++
 " Bundle 'tpope/vim-fugitive'
 " Bundle 'mattn/gist-vim'
 "To create gist: a simple way to share snippets.
@@ -103,15 +107,55 @@ Bundle 'simplyzhao/cscope_maps.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-"================ CTRLP_CONFIG ===================
+" ==================== RAINBOW_PARENTHESIS_CONFIG ====================
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+au Syntax * RainbowParenthesesLoadChevrons
+au VimEnter * RainbowParenthesesToggleAll
+
+" ==================== CTRLP_CONFIG ====================
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
+"set wildignore+=*.o,*.pyc,.git,bin,node_modules,venv
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_mruf_relative = 1
 
-"=============== TAGBAR_CONFIG =======================
+let g:ctrlp_buftag_types = {
+     \ 'go'         : '--language-force=go --golang-types=ftv',
+     \ 'coffee'     : '--language-force=coffee --coffee-types=cmfvf',
+     \ 'markdown'   : '--language-force=markdown --markdown-types=hik',
+     \ 'objc'       : '--language-force=objc --objc-types=mpci',
+     \ }
+
+" ==================== TAGBAR_CONFIG ====================
 "let g:tagbar_ctags_bin='/usr/bin/'  " Proper Ctags locations
 let g:tagbar_width=26                " Default is 40, seems too wide
 let g:tagbar_type_go = {  
@@ -144,7 +188,7 @@ let g:tagbar_type_go = {
 ",.: search through the list of tags and jump to it.
 nnoremap <leader>. :CtrlPTag<cr>
 
-" ================ KEY REMAPPINGS ===================
+" ==================== KEY REMAPPINGS ====================
 map <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <Esc>:NERDTreeToggle<CR>
 
@@ -161,6 +205,7 @@ map <silent> <F6> <Esc>:tabn<CR>
 imap <silent> <F6> <Esc>:tabn<CR>i
 
 nnoremap <silent> <F9> :YRShow<CR>
+inoremap <silent> <F9> <ESC>:YRShow<cr>
 
 inoremap <esc> <nop>
 inoremap jk <Esc>
@@ -171,9 +216,9 @@ map <S-s> :join<CR>
 map <S-j> 5j
 map <S-k> 5k
 
-">Lokaltog/vim-easymotion.vim
-" let g:EasyMotion_do_mapping = 0 " Disable default mappings
-map <Leader> <Plug>(easymotion-prefix)
+" ==================== EASYMOTION_CONFIG ====================
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+map <Leader><leader> <Plug>(easymotion-prefix)
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
@@ -188,34 +233,19 @@ let g:EasyMotion_smartcase = 1
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
-">kien/ctrlp.vim
-"set wildignore+=*.o,*.pyc,.git,bin,node_modules,venv
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_mruf_relative = 1
-
-let g:ctrlp_buftag_types = {
-     \ 'go'         : '--language-force=go --golang-types=ftv',
-     \ 'coffee'     : '--language-force=coffee --coffee-types=cmfvf',
-     \ 'markdown'   : '--language-force=markdown --markdown-types=hik',
-     \ 'objc'       : '--language-force=objc --objc-types=mpci',
-     \ }
-
-">YankRing.vim
+" ==================== YANKRING_CONFIG ====================
 let g:yankring_history_file = '.yankring_history'
 
 ">scrooloose/nerdcommenter
 " let g:NERDSpaceDelims = 1
 
-">scrooloose/syntastic
+" ==================== SYNTASTIC_CONFIG ====================
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
-"=============Lokaltog/vim-powerline
+" ==================== POWERLINE_CONFIG ====================
 let g:Powerline_symbols = 'fancy'
 
 ">Raimondi/delimitMate
@@ -246,14 +276,13 @@ let g:user_emmet_mergelines_key = '<C-y>m'
 let g:user_emmet_codepretty_key = '<C-y>c'
 
 
-"============altercation/vim-colors-solarized
-let g:solarized_termtrans = 1
-let g:solarized_termcolors = 256
-let g:solarized_contrast = "normal"
-let g:solarized_visibility = "normal"
+"altercation/vim-colors-solarized
+" let g:solarized_termtrans = 1
+" let g:solarized_termcolors = 256
+" let g:solarized_contrast = "normal"
+" let g:solarized_visibility = "normal"
 
 set background=dark
-
 colorscheme hybrid
 
 ">Set font for GUI vim.
@@ -380,6 +409,8 @@ vnoremap > >gv
 " Don't need shift for commands.
 nnoremap ; :
 vnoremap ; :
+" nnoremap : <nop>
+" vnoremap : <nop>
 " Leader to reselect pasted
 " nnoremap <leader>v V`]
 " Remap split window navigation
@@ -388,12 +419,22 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 " Fix save typos.
-:ca WQ wq
-:ca Wq wq
-:ca QA qa
-:ca Qa qa
-:ca W w
-:ca Q q
+:ca qw wq
+" :W sudo saves the file (useful for handling the permission-denied error)
+command! W w !sudo tee % > /dev/null
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove 
+map <leader>t<leader> :tabnext 
+" Let ',tl' toggle between this and the last accessed tab
+let g:lasttab = 1
+nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Misc Settings
 " =============
@@ -476,7 +517,6 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
 " Leader to toggle list chars
 nnoremap <leader>l :set list!<cr>
-
 " Format settings
 set linebreak
 set textwidth=0
@@ -491,17 +531,22 @@ set smartindent
 au! FileType python setl nosmartindent 
 " Always hide the status line
 set laststatus=2
+" Show what command I am typing, useful when many .vimrc settings.
+set showcmd
 " Enable spell checking
 set spell spelllang=en_us
-
 " Fix mis-spelled word with <leader>f
 nnoremap <leader>f 1z=
 " Toggle spell check with <leader>f
 nnoremap <leader>s :set spell!<cr>
-
-" use tab to go to matching brackets.
-nnoremap <tab> %
-vnoremap <tab> %
+" Strip all trailing whitespace in the current file
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+" Open .vimrc in a new vertically split window.
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+" Source .vimrc
+nnoremap <leader>rc :so $MYVIMRC<CR>
+" Open current file in a vertically split window.
+nnoremap <leader>w <C-w>v<C-w>l
 
 " Arrows are unvimlike 
 nnoremap <up> <nop>
@@ -512,7 +557,13 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-" " Miscellaneous 
+" Move visual lines instead of actual lines.
+nnoremap j gj
+nnoremap k gk
+" Visual mode pressing * or # searches for the current selection
+vnoremap <silent> * :call VisualSelection('f', '')<CR>
+vnoremap <silent> # :call VisualSelection('b', '')<CR>
+" Miscellaneous
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
@@ -676,3 +727,26 @@ if has("cscope")
 
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                         HELPER FUNCTIONS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("Ag \"" . l:pattern . "\" " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
