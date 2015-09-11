@@ -25,24 +25,27 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " ++++++++++++++++++++ Languages and Syntax ++++++++++++++++++++
-"HTML syntax highlight
+"HTML5 syntax autocomplete & highlighting (includes canvas & SVG)
 Bundle 'othree/html5.vim'
-"html & css stylus update
+"html & css3 stylus update
 Bundle 'vim-stylus'
 "Automatic Tex Plugin
 Bundle 'coot/atp_vim'
-"For brackets auto-completion
+"Auto completes endif/endfunction in vim script & Ruby.
 Bundle 'tpope/vim-endwise'
 "For Go programming language
 "Bundle 'fatih/vim-go'
 "Expand abbreviation, <c-y>,: activate; div>p#id$*3>a; select text + <c-y>,
-"+ ul>li*
-"<c-y>A: quote in HTML; <c-y>k: remove an HTML tag
+"+ ul>li* <c-y>A: quote in HTML; <c-y>k: remove an HTML tag
 Bundle 'mattn/emmet-vim'
-"For Python autocomplete
+"For Python
 " Bundle 'davidhalter/jedi-vim'
 " Plugin from http://vim-scripts.org/vim/scripts.html; highlight parenthesis.
 Plugin 'rainbow_parentheses.vim'
+" Auto detect file encoding type.
+Plugin 'fencview.vim'
+" let g:fencview_autodetect = 1
+" let g:fencview_auto_patterns='*'
 
 " ++++++++++++++++++++ UI Upgrades ++++++++++++++++++++
 "F4: toggle summary view; ctags -R: allows <c-]> to go to definition.
@@ -61,47 +64,60 @@ Bundle "myusuf3/numbers.vim"
 Bundle 'sjl/gundo.vim'
 "status line at the bottom
 Bundle 'bling/vim-airline'
-"vague search, remapped to '\+p'
+"vague search, remapped to '<leader>p'
 Bundle 'kien/ctrlp.vim'
 "solarized color scheme
-" Bundle 'altercation/vim-colors-solarized'
+Bundle 'altercation/vim-colors-solarized'
 "~500 schemes, use colorscheme to set
 Bundle "flazz/vim-colorschemes"
 
 " ++++++++++++++++++++ Editing Upgrades ++++++++++++++++++++
-Bundle 'YankRing.vim'
 "F9: toggle yank history. ctrl+p/n: last/previous yank
-Bundle 'easymotion/vim-easymotion'
+Bundle 'YankRing.vim'
 "s: search in both dir; <leader>j/k: multiple lines up/down
-Bundle 'tomtom/tcomment_vim'
+Bundle 'easymotion/vim-easymotion'
 "gcc or <c-_><c-_>: comment / uncomment a line; gc: comment selected block.
-Bundle 'Raimondi/delimitMate'
+Bundle 'tomtom/tcomment_vim'
 "Auto close quotes / brackets
-Bundle 'tpope/vim-surround'
+Bundle 'Raimondi/delimitMate'
 "ys to add surrounding quotes/tags; ysiw*: surround word with *
 "viwS': surround the word with quote; cs'"/ds': change/delete surrounding
 "viwStem: surround with <em>; cs"tem: change surrounding tag to <em>
-Bundle 'shougo/neocomplete'
+Bundle 'tpope/vim-surround'
+" Make . work with surround
+Bundle 'tpope/vim-repeat'
+" Fix <c-a>/<c-x> for datetime increment/decrement.d<c-x> sets to current
+" local datetime.
+Bundle 'tpope/vim-speeddating'
 "Auto complete
+Bundle 'shougo/neocomplete'
 Bundle 'simplyzhao/cscope_maps.vim'
+"dash.app inside vim, some offline code API
 " Bundle 'rizzatti/funcoo.vim'
 " Bundle 'rizzatti/dash.vim'
-"dash.app inside vim, some offline code API
 
-"Bundle 'terryma/vim-multiple-cursors'
 "lustyExplorer
+"Bundle 'terryma/vim-multiple-cursors'
+"Search for keywords, sample usage: Ack -i 'word' folder
+Bundle 'mileszs/ack.vim'
 "Search inside open buffer; map to <leader>/
-"nnoremap <leader>/ :Ack
-"ack.vim
-"Ack 'word' folder: find words in folders;
-"let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-"nmap <leader>a :tab split<CR>:Ack ''<left>
-"nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
+nnoremap <leader>/ :Ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+nmap <leader>a :tab split<CR>:Ack ''<left>
+nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 
 " ++++++++++++++++++++ Misc Upgrades ++++++++++++++++++++
+" Calender, invoked by :Cal 2015 09 10. E: event list; T: task list; ?:help.
+" :Cal -view=year/clock; >/<: switch between views
+Bundle 'itchyny/calendar.vim'
+" let g:calendar_google_calendar = 1
+" let g:calendar_google_task = 1
+" Integrate git inside vim
 " Bundle 'tpope/vim-fugitive'
-" Bundle 'mattn/gist-vim'
 "To create gist: a simple way to share snippets.
+" Bundle 'mattn/gist-vim'
 " Bundle 'mattn/webapi-vim'
 
 call vundle#end()            " required
@@ -211,10 +227,16 @@ inoremap <esc> <nop>
 inoremap jk <Esc>
 vnoremap <esc> <nop>
 vnoremap jk <Esc>
+" Enable cursor movement in insert mode
+inoremap <c-j> <down>
+inoremap <c-k> <up>
+inoremap <c-l> <right>
+inoremap <c-h> <left>
 
 map <S-s> :join<CR>
-map <S-j> 5j
+nnoremap <S-j> 5j
 map <S-k> 5k
+nnoremap <space> /
 
 " ==================== EASYMOTION_CONFIG ====================
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -236,8 +258,14 @@ map <Leader>k <Plug>(easymotion-k)
 " ==================== YANKRING_CONFIG ====================
 let g:yankring_history_file = '.yankring_history'
 
-">scrooloose/nerdcommenter
-" let g:NERDSpaceDelims = 1
+" ==================== NERDTREE_CONFIG ====================
+nmap <leader>nt :NERDTree<cr>:set rnu<cr>
+let NERDTreeShowBookmarks=1
+let NERDTreeShowFiles=1
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.$','\~$']
+let NERDTreeShowLineNumbers=1
+let NERDTreeWinPos=0
 
 " ==================== SYNTASTIC_CONFIG ====================
 let g:syntastic_always_populate_loc_list = 1
@@ -258,6 +286,7 @@ let delimitMate_balance_matchpairs = 1
 " let g:gist_post_private = 1
 
 ">mattn/emmet-vim
+let g:user_emmet_mode='a'
 let g:user_emmet_leader_key = '<c-y>'
 let g:user_emmet_expandabbr_key = '<C-y>,'
 let g:user_emmet_expandword_key = '<C-y>;'
@@ -275,7 +304,6 @@ let g:user_emmet_anchorizesummary_key = '<C-y>A'
 let g:user_emmet_mergelines_key = '<C-y>m'
 let g:user_emmet_codepretty_key = '<C-y>c'
 
-
 "altercation/vim-colors-solarized
 " let g:solarized_termtrans = 1
 " let g:solarized_termcolors = 256
@@ -283,7 +311,10 @@ let g:user_emmet_codepretty_key = '<C-y>c'
 " let g:solarized_visibility = "normal"
 
 set background=dark
-colorscheme hybrid
+colorscheme wombat256
+" colorscheme hybrid "previous color scheme
+" Match html tags and if...endif in .vimrc
+runtime macros/matchit.vim
 
 ">Set font for GUI vim.
 if has("gui_running")
@@ -327,10 +358,6 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -342,7 +369,6 @@ endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
@@ -358,9 +384,6 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 "let g:neocomplete#enable_cursor_hold_i = 1
 " Or set this.
 "let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
@@ -387,7 +410,6 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
-
 ">Key Remappings
 ">==============
 
@@ -412,12 +434,20 @@ vnoremap ; :
 " nnoremap : <nop>
 " vnoremap : <nop>
 " Leader to reselect pasted
-" nnoremap <leader>v V`]
+nnoremap <leader>v V`]
+" Fold tags in HTML
+nnoremap <leader>ft Vatzf
 " Remap split window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+" Open current window in a new tab
+nnoremap <C-w>t <C-w>T
+" Fix <ESC> typos.
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 " Fix save typos.
 :ca qw wq
 :ca WQ wq
@@ -432,8 +462,11 @@ command! W w !sudo tee % > /dev/null
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove<cr>
+map <leader>tm :tabmove
+" same as gt
 map <leader>t<leader> :tabnext<cr>
+" same as gT
+map <leader>tp :tabprevious<cr>
 " Let ',tl' toggle between this and the last accessed tab
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
@@ -518,8 +551,8 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-" List settings
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+" List settings: Set invisible characters
+set listchars=eol:$,tab:▸·,trail:·,extends:>,precedes:<
 set list
 " Leader to toggle list chars
 nnoremap <leader>l :set list!<cr>
@@ -553,16 +586,15 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <leader>rc :so $MYVIMRC<CR>
 " Open current file in a vertically split window.
 nnoremap <leader>w <C-w>v<C-w>l
-
 " Arrows are unvimlike
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <left> <nop>
+" nnoremap <right> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
 " Move visual lines instead of actual lines.
 nnoremap j gj
 nnoremap k gk
