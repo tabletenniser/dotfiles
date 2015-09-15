@@ -91,6 +91,8 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
 "Auto complete
 Bundle 'shougo/neocomplete'
+Bundle 'Shougo/neosnippet'
+Bundle 'Shougo/neosnippet-snippets'
 Bundle 'simplyzhao/cscope_maps.vim'
 "dash.app inside vim, some offline code API
 " Bundle 'rizzatti/funcoo.vim'
@@ -366,8 +368,25 @@ function! s:my_cr_function()
   " For no inserting <CR> key.
   "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
+
+" Plugin key-mappings.
+imap <C-s>     <Plug>(neosnippet_expand_or_jump)
+smap <C-s>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-s>     <Plug>(neosnippet_expand_target)
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
@@ -559,7 +578,7 @@ nnoremap <leader>l :set list!<cr>
 " Format settings
 set linebreak
 set textwidth=0
-set colorcolumn=100
+" set colorcolumn=100
 set wrap
 set formatoptions=qrn1
 " enable UNDO even after closing and reopening the file.
@@ -574,6 +593,8 @@ set laststatus=2
 set showcmd
 " Enable spell checking
 set spell spelllang=en_us
+" Disable spell checking
+set spell!
 " Fix mis-spelled word with <leader>f
 nnoremap <leader>f 1z=
 " Toggle spell check with <leader>f

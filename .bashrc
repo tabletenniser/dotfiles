@@ -5,22 +5,20 @@
 
 # Have the prompt default to be the pwd
 # Must be here in the .bashrc since non-interative shells force unset PS1
-#export PS1="`pwd`$"
+# export PS1="`pwd`$"
 
 function mcd() {
 	mkdir -p "$@"	#make parents directories if needed
 	cd "$@"
 }
-
-#export -f mcd
+export -f mcd
 
 #export -f pbin
 
 function findall(){
 	find . -name "$@"
 }
-
-#export -f findall
+export -f findall
 
 export CLICOLOR=:1
 
@@ -29,5 +27,12 @@ alias la='ls -A'
 alias l='ls -lAh'
 alias so='source'
 alias vl='vim -c "normal '\''0"'    # vl to open last file opened in vim.
+alias ecf='ssh wangze1@remote.ecf.utoronto.ca -X'
+alias eecg='ssh wangze1@ug138.eecg.utoronto.ca -X'
 #ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 pwd
+
+function cd(){
+	builtin cd "$@" && ls
+	export PATH=`pwd`:$PATH
+}
