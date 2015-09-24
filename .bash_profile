@@ -12,3 +12,6 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 # The orginal version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${PATH}"
 export PATH
+
+# added by Anaconda 2.3.0 installer
+export PATH="/Users/zexuanwang/anaconda/bin:$PATH"

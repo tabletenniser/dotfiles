@@ -27,12 +27,11 @@ alias la='ls -A'
 alias l='ls -lAh'
 alias so='source'
 alias vl='vim -c "normal '\''0"'    # vl to open last file opened in vim.
-alias ecf='ssh wangze1@remote.ecf.utoronto.ca -X'
-alias eecg='ssh wangze1@ug138.eecg.utoronto.ca -X'
+alias ecf='ssh -A wangze1@remote.ecf.utoronto.ca -X'
+alias eecg='ssh -A wangze1@ug139.eecg.utoronto.ca -X'
 #ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 pwd
 
 function cd(){
 	builtin cd "$@" && ls
-	export PATH=`pwd`:$PATH
 }

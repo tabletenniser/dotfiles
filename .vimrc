@@ -236,7 +236,7 @@ inoremap <c-l> <right>
 inoremap <c-h> <left>
 
 map <S-s> :join<CR>
-nnoremap <S-j> 5j
+noremap <S-j> 5j
 map <S-k> 5k
 nnoremap <space> /
 
