@@ -225,9 +225,9 @@ imap <silent> <F6> <Esc>:tabn<CR>i
 nnoremap <silent> <F9> :YRShow<CR>
 inoremap <silent> <F9> <ESC>:YRShow<cr>
 
-inoremap <esc> <nop>
+" inoremap <esc> <nop>
 inoremap jk <Esc>
-vnoremap <esc> <nop>
+" vnoremap <esc> <nop>
 vnoremap jk <Esc>
 " Enable cursor movement in insert mode
 inoremap <c-j> <down>
