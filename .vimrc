@@ -565,7 +565,7 @@ set nobackup
 set nowb
 set noswapfile
 " Tab settings
-set noexpandtab   " Set expandtab to enable \t
+set expandtab   " Set noexpandtab to enable \t
 set smarttab
 set shiftwidth=4
 set tabstop=4

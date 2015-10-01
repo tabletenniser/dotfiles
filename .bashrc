@@ -30,7 +30,7 @@ alias hn='hostname'
 alias vl='vim -c "normal '\''0"'    # vl to open last file opened in vim.
 alias ecf='ssh -A wangze1@remote.ecf.utoronto.ca -X'
 alias cs='ssh -A zexuan@cs.toronto.edu -X'
-alias eecg='ssh -A wangze1@ug143.eecg.utoronto.ca -X'
+alias eecg='ssh -A wangze1@ug146.eecg.utoronto.ca -X'
 #ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 pwd
 
