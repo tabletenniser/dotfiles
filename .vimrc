@@ -58,6 +58,8 @@ Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdtree'
 "syntax check upon save/exit
 Bundle 'scrooloose/syntastic'
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 "F3: toggle numbers
 Bundle "myusuf3/numbers.vim"
 "<leader>+u to show list of history undos

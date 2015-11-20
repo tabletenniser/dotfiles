@@ -21,6 +21,7 @@ function findall(){
 export -f findall
 
 export CLICOLOR=:1
+export HISTSIZE=3000
 
 alias grep='grep -Hn --color'
 alias la='ls -A'
@@ -28,9 +29,10 @@ alias l='ls -lAh'
 alias so='source'
 alias hn='hostname'
 alias vl='vim -c "normal '\''0"'    # vl to open last file opened in vim.
-alias ecf='ssh -A wangze1@remote.ecf.utoronto.ca -X'
-alias cs='ssh -A zexuan@cs.toronto.edu -X'
-alias eecg='ssh -A wangze1@ug146.eecg.utoronto.ca -X'
+alias ecf='ssh -A wangze1@remote.ecf.utoronto.ca'
+alias cs='ssh -A zexuan@cs.toronto.edu'
+alias guppy7='ssh -A zexuan@guppy7.ais.sandbox'
+alias eecg='ssh -A wangze1@ug52.eecg.utoronto.ca'
 #ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 pwd
 
