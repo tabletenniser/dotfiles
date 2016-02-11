@@ -24,14 +24,18 @@ export CLICOLOR=:1
 export HISTSIZE=3000
 
 alias grep='grep -Hn --color'
-alias la='ls -A'
+alias sl='ls'
+alias la='ls -Al'
 alias l='ls -lAh'
 alias so='source'
 alias hn='hostname'
+alias capstone='cd ~/Dropbox/4B_semester/capstone'
 alias vl='vim -c "normal '\''0"'    # vl to open last file opened in vim.
 alias ecf='ssh -A wangze1@remote.ecf.utoronto.ca'
 alias cs='ssh -A zexuan@cs.toronto.edu'
-alias guppy7='ssh -A zexuan@guppy7.ais.sandbox'
+alias cdf='ssh -A c4wangze@cdf.utoronto.ca'
+alias g7='ssh -A zexuan@guppy7.ais.sandbox'
+alias eecg='ssh -A wangze1@ug52.eecg.utoronto.ca -X'
 alias rc='source ~/.bashrc'
 #ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 pwd
