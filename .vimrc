@@ -309,10 +309,11 @@ let g:user_emmet_mergelines_key = '<C-y>m'
 let g:user_emmet_codepretty_key = '<C-y>c'
 
 "altercation/vim-colors-solarized
-" let g:solarized_termtrans = 1
-" let g:solarized_termcolors = 256
-" let g:solarized_contrast = "normal"
-" let g:solarized_visibility = "normal"
+let g:solarized_termtrans = 1
+let g:solarized_termcolors = 256
+let g:solarized_contrast = "normal"
+let g:solarized_visibility = "normal"
+colorscheme solarized
 
 set background=dark
 colorscheme wombat256

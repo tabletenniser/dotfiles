@@ -30,17 +30,25 @@ alias l='ls -lAh'
 alias so='source'
 alias hn='hostname'
 alias capstone='cd ~/Dropbox/4B_semester/capstone'
-alias thesis_local='cd ~/Dropbox/4A_semester/Thesis/'
+alias ece419='cd ~/Dropbox/4B_semester/ECE419/'
+alias ece568='cd ~/Dropbox/4B_semester/ece568/'
+alias thesis_local='cd ~/Dropbox/4B_semester/thesis'
 alias thesis='cd /Volumes/FAT32_FORMA/thesis_dataset_manual_labeling/thesis/'
 alias vl='vim -c "normal '\''0"'    # vl to open last file opened in vim.
 alias ecf='ssh -A wangze1@remote.ecf.utoronto.ca'
 alias cs='ssh -A zexuan@cs.toronto.edu'
 alias cdf='ssh -A c4wangze@cdf.utoronto.ca'
 alias g7='ssh -A zexuan@guppy7.ais.sandbox'
+alias g17='ssh -A zexuan@guppy17.ais.sandbox'
+alias g18='ssh -A zexuan@guppy18.ais.sandbox'
+alias g8='ssh -A zexuan@guppy8.ais.sandbox'
 alias g3='ssh -A zexuan@guppy3.ais.sandbox'
 alias eecg='ssh -A wangze1@ug52.eecg.utoronto.ca -X'
 alias rc='source ~/.bashrc'
-#ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
+alias sec='vim ~/Desktop/receipt_pwd_safe/userName+pwd.txt'
+alias sublime='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
+export EDITOR=vim
+# ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 pwd
 
 function cd(){
