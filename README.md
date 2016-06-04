@@ -6,8 +6,8 @@ Steps to install vim plugin:
 4. ln ~/dotfiles/.vimrc ~/.vimrc  
 5. vim ~/.vimrc  
 6. :PluginInstall  
-
-Steps to set up .bashrc, .bashprofile and .gitconfig:
-1. ln ~/dotfiles/.bashrc ~/.bashrc
-2. ln ~/dotfiles/.bash_profile ~/.bash_profile
-3. ln ~/dotfiles/.gitconfig: ~/.gitconfig
+  
+Steps to set up .bashrc, .bashprofile and .gitconfig:  
+1. ln ~/dotfiles/.bashrc ~/.bashrc  
+2. ln ~/dotfiles/.bash_profile ~/.bash_profile  
+3. ln ~/dotfiles/.gitconfig: ~/.gitconfig  
