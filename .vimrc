@@ -229,8 +229,9 @@ inoremap <silent> <F9> <ESC>:YRShow<cr>
 
 " inoremap <esc> <nop>
 inoremap jk <Esc>
+inoremap kj <Esc>
 " vnoremap <esc> <nop>
-vnoremap jk <Esc>
+vnoremap kj <Esc>
 " Enable cursor movement in insert mode
 inoremap <c-j> <down>
 inoremap <c-k> <up>
