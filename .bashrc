@@ -74,7 +74,8 @@ alias rc='source ~/.bashrc'
 alias sec='vim ~/Desktop/sec/sec.txt'
 alias sublime='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
 
-export EDITOR=vim
+export VISUAL=vim
+export EDITOR="$VISUAL"
 export HISTTIMEFORMAT='%F %T '
 # ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 pwd
