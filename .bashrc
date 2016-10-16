@@ -73,11 +73,12 @@ alias g3='ssh -A zexuan@guppy3.ais.sandbox'
 alias eecg='ssh -A wangze1@ug52.eecg.utoronto.ca -X'
 alias pi='ssh pi@tabletenniser.ddns.net'
 alias rc='source ~/.bashrc'
-alias sec='vim ~/Desktop/receipt_pwd_safe/userName+pwd.txt'
+alias sec='vim ~/Desktop/sec/sec.txt'
 alias sublime='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
 alias ck='ps aux | sort -nrk 3,3 | head -n 5'
 
-export EDITOR=vim
+export VISUAL=vim
+export EDITOR="$VISUAL"
 export HISTTIMEFORMAT='%F %T '
 # ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 pwd
