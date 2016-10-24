@@ -11,6 +11,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ">Terminal Colours
 set t_Co=256
+set cc=81
 ">Leader Key
 let mapleader = ","
 
@@ -61,7 +62,7 @@ Bundle 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 "F3: toggle numbers
-Bundle "myusuf3/numbers.vim"
+" Bundle "myusuf3/numbers.vim"
 "<leader>+u to show list of history undos
 Bundle 'sjl/gundo.vim'
 "status line at the bottom
@@ -242,6 +243,12 @@ map <S-s> :join<CR>
 noremap <S-j> 5j
 map <S-k> 5k
 nnoremap <space> /
+
+nmap <leader>c :find %:t:r.c<CR>
+nmap <leader>C :sf %:t:r.c<CR>
+
+nmap <leader>h :find %:t:r.h<CR>
+nmap <leader>H :sf %:t:r.h<CR>
 
 " ==================== EASYMOTION_CONFIG ====================
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
