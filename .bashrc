@@ -47,6 +47,11 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# Change title of the bash tab. E.g title src_old
+function title {
+    echo -ne "\033]0;"$*"\007"
+}
+
 alias grep='grep -Hn --color'
 alias cat='cat -n'
 alias sl='ls'
@@ -61,7 +66,9 @@ alias thesis_local='cd ~/Dropbox/4B_semester/thesis'
 alias thesis='cd /Volumes/FAT32_FORMA/thesis_dataset_manual_labeling/thesis/'
 alias vl='vim -c "normal '\''0"'    # vl to open last file opened in vim.
 alias vm='ssh root@10.120.250.212'
-alias vm_local='ssh awang@192.168.153.128'
+alias vm_local_nat='ssh awang@192.168.153.128'
+alias v='vm_local_nat'
+alias vm_local='ssh awang@10.116.202.243'
 alias ecf='ssh -A wangze1@remote.ecf.utoronto.ca'
 alias cs='ssh -A zexuan@cs.toronto.edu'
 alias cdf='ssh -A c4wangze@cdf.utoronto.ca'
