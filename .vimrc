@@ -106,6 +106,8 @@ Bundle 'simplyzhao/cscope_maps.vim'
 "Search for keywords, sample usage: Ack -i 'word' folder
 Bundle 'mileszs/ack.vim'
 "Search inside open buffer; map to <leader>/
+Bundle 'rking/ag.vim'
+
 nnoremap <leader>/ :Ack
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -156,18 +158,22 @@ au Syntax * RainbowParenthesesLoadChevrons
 au VimEnter * RainbowParenthesesToggleAll
 
 " ==================== CTRLP_CONFIG ====================
-let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ }
-"set wildignore+=*.o,*.pyc,.git,bin,node_modules,venv
+" Make the file open in new tab.
+" let g:ctrlp_prompt_mappings = {
+"     \ 'AcceptSelection("e")': ['<c-t>'],
+"     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+"     \ }
+set wildignore+=*.o,*.pyc,.git,bin,node_modules,venv
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_mruf_relative = 1
+let g:ctrlp_split_window = 0
+let g:ctrlp_open_new_file = 0
+" let g:ctrlp_dont_split = 'netrw'
 
 let g:ctrlp_buftag_types = {
      \ 'go'         : '--language-force=go --golang-types=ftv',
@@ -238,6 +244,7 @@ inoremap <c-j> <down>
 inoremap <c-k> <up>
 inoremap <c-l> <right>
 inoremap <c-h> <left>
+"
 
 map <S-s> :join<CR>
 noremap <S-j> 5j
@@ -475,6 +482,10 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+" Open ctag in new tab (change ts to tag to use cscope instead)
+nnoremap <C-]> :exec("ts ".expand("<cword>"))<CR>
+" nnoremap <leader><C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <C-\> :vsp <CR>:exec("ts ".expand("<cword>"))<CR>
 " Open current window in a new tab
 nnoremap <C-w>t <C-w>T
 " Fix <ESC> typos.
@@ -583,7 +594,7 @@ set expandtab   " Set noexpandtab to enable \t
 set smarttab
 set shiftwidth=4
 set tabstop=4
-set softtabstop=4
+" set softtabstop=4
 " List settings: Set invisible characters
 set listchars=eol:$,tab:▸·,trail:·,extends:>,precedes:<
 set list
@@ -666,6 +677,7 @@ set viminfo^=%
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This tests to see if vim was configured with the '--enable-cscope' option
 " when it was compiled.  If it wasn't, time to recompile vim...
+set tags=./tags;/
 if has("cscope")
 
     """"""""""""" Standard cscope/vim boilerplate
@@ -675,7 +687,7 @@ if has("cscope")
 
     " check cscope for definition of a symbol before checking ctags: set to 1
     " if you want the reverse search order.
-    set csto=0
+    set csto=1
 
     " add any cscope database in current directory
     if filereadable("cscope.out")
@@ -686,7 +698,7 @@ if has("cscope")
     endif
 
     " show msg when any other cscope db added
-    set cscopeverbose
+    set nocscopeverbose
 
 
     """"""""""""" My cscope/vim key mappings
