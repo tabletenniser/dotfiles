@@ -242,7 +242,7 @@ inoremap <c-h> <left>
 map <S-s> :join<CR>
 noremap <S-j> 5j
 map <S-k> 5k
-nnoremap <space> /
+nnoremap <space> <C-d>
 
 nmap <leader>c :find %:t:r.c<CR>
 nmap <leader>C :sf %:t:r.c<CR>
