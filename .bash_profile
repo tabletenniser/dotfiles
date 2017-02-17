@@ -1,6 +1,6 @@
-# if [ -f ~/.bashrc ]; then
-#    source ~/.bashrc
-# fi
+if [ -f ~/dotfiles/.bashrc ]; then
+   source ~/dotfiles/.bashrc
+fi
 
 # export ANDROID_HOME=`brew --prefix android`
 export PATH=${PATH}:$ANDROID_HOME/bin

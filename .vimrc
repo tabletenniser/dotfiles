@@ -11,6 +11,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ">Terminal Colours
 set t_Co=256
+set cc=81
 ">Leader Key
 let mapleader = ","
 
@@ -32,7 +33,7 @@ Bundle 'vim-stylus'
 "Automatic Tex Plugin
 Bundle 'coot/atp_vim'
 "Auto completes endif/endfunction in vim script & Ruby.
-Bundle 'tpope/vim-endwise'
+" Bundle 'tpope/vim-endwise'
 "For Go programming language
 "Bundle 'fatih/vim-go'
 "Expand abbreviation, <c-y>,: activate; div>p#id$*3>a; select text + <c-y>,
@@ -61,7 +62,7 @@ Bundle 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 "F3: toggle numbers
-Bundle "myusuf3/numbers.vim"
+" Bundle "myusuf3/numbers.vim"
 "<leader>+u to show list of history undos
 Bundle 'sjl/gundo.vim'
 "status line at the bottom
@@ -105,6 +106,22 @@ Bundle 'simplyzhao/cscope_maps.vim'
 "Search for keywords, sample usage: Ack -i 'word' folder
 Bundle 'mileszs/ack.vim'
 "Search inside open buffer; map to <leader>/
+Bundle 'rking/ag.vim'
+" e    to open file and close the quickfix window
+" o    to open (same as enter)
+" go   to preview file (open but maintain focus on ag.vim results)
+" t    to open in new tab
+" T    to open in new tab silently
+" h    to open in horizontal split
+" H    to open in horizontal split silently
+" v    to open in vertical split
+" gv   to open in vertical split silently
+" q    to close the quickfix window
+" :HGblame to show who edits each file
+Bundle "vim-scripts/vcscommand.vim"
+Bundle 'jlfwong/vim-mercenary'
+Bundle "terryma/vim-multiple-cursors"
+
 nnoremap <leader>/ :Ack
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -155,18 +172,27 @@ au Syntax * RainbowParenthesesLoadChevrons
 au VimEnter * RainbowParenthesesToggleAll
 
 " ==================== CTRLP_CONFIG ====================
-let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ }
-"set wildignore+=*.o,*.pyc,.git,bin,node_modules,venv
+" Setup some default ignores
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+    \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
+" Make the file open in new tab.
+" let g:ctrlp_prompt_mappings = {
+"     \ 'AcceptSelection("e")': ['<c-t>'],
+"     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+"     \ }
+set wildignore+=*.o,*.pyc,.git,bin,node_modules,venv
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_mruf_relative = 1
+let g:ctrlp_split_window = 0
+let g:ctrlp_open_new_file = 0
+" let g:ctrlp_dont_split = 'netrw'
 
 let g:ctrlp_buftag_types = {
      \ 'go'         : '--language-force=go --golang-types=ftv',
@@ -229,18 +255,28 @@ inoremap <silent> <F9> <ESC>:YRShow<cr>
 
 " inoremap <esc> <nop>
 inoremap jk <Esc>
+" inoremap kj <Esc>
 " vnoremap <esc> <nop>
+" vnoremap kj <Esc>
 vnoremap jk <Esc>
 " Enable cursor movement in insert mode
 inoremap <c-j> <down>
 inoremap <c-k> <up>
 inoremap <c-l> <right>
 inoremap <c-h> <left>
+"
 
-map <S-s> :join<CR>
+nnoremap <S-s> :join<CR>
+nnoremap <S-l> /[,(]<CR>a<CR><Esc>:nohl<CR>
 noremap <S-j> 5j
 map <S-k> 5k
-nnoremap <space> /
+nnoremap <space> <C-d>
+
+nmap <leader>c :find %:t:r.c<CR>
+nmap <leader>C :sf %:t:r.c<CR>
+
+nmap <leader>h :find %:t:r.h<CR>
+nmap <leader>H :sf %:t:r.h<CR>
 
 " ==================== EASYMOTION_CONFIG ====================
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -419,6 +455,9 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" vim is dumb with .json files, treat them as javascript
+" autocmd BufNewFile,BufRead *.json set ft=javascript
+set conceallevel=0
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -464,6 +503,10 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+" Open ctag in new tab (change ts to tag to use cscope instead)
+nnoremap <C-]> :exec("ts ".expand("<cword>"))<CR>
+" nnoremap <leader><C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <C-\> :vsp <CR>:exec("ts ".expand("<cword>"))<CR>
 " Open current window in a new tab
 nnoremap <C-w>t <C-w>T
 " Fix <ESC> typos.
@@ -569,10 +612,10 @@ set nowb
 set noswapfile
 " Tab settings
 set expandtab   " Set noexpandtab to enable \t
-set smarttab
+" set smarttab
 set shiftwidth=4
 set tabstop=4
-set softtabstop=4
+" set softtabstop=4
 " List settings: Set invisible characters
 set listchars=eol:$,tab:▸·,trail:·,extends:>,precedes:<
 set list
@@ -587,8 +630,9 @@ set formatoptions=qrn1
 " enable UNDO even after closing and reopening the file.
 set undofile
 " Indentation settings
-set autoindent
-set smartindent
+" set autoindent
+" set smartindent
+set cindent
 au! FileType python setl nosmartindent
 " Always hide the status line
 set laststatus=2
@@ -598,6 +642,9 @@ set showcmd
 set spell spelllang=en_us
 " Disable spell checking
 set spell!
+" Open new window on the right instead
+set splitbelow
+set splitright
 " Fix mis-spelled word with <leader>f
 nnoremap <leader>f 1z=
 " Toggle spell check with <leader>f
@@ -655,6 +702,7 @@ set viminfo^=%
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This tests to see if vim was configured with the '--enable-cscope' option
 " when it was compiled.  If it wasn't, time to recompile vim...
+set tags=./tags;/
 if has("cscope")
 
     """"""""""""" Standard cscope/vim boilerplate
@@ -664,7 +712,7 @@ if has("cscope")
 
     " check cscope for definition of a symbol before checking ctags: set to 1
     " if you want the reverse search order.
-    set csto=0
+    set csto=1
 
     " add any cscope database in current directory
     if filereadable("cscope.out")
@@ -675,7 +723,7 @@ if has("cscope")
     endif
 
     " show msg when any other cscope db added
-    set cscopeverbose
+    set nocscopeverbose
 
 
     """"""""""""" My cscope/vim key mappings

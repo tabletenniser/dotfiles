@@ -13,19 +13,49 @@ function mcd() {
 }
 export -f mcd
 
-#export -f pbin
-
 function findall(){
 	find . -name "$@"
 }
 export -f findall
 
+function rgrep(){
+	grep -r "$@" *
+}
+export -f rgrep
+
 export CLICOLOR=:1
-export HISTSIZE=3000
+export HISTSIZE=2000
+HISTFILESIZE=3000
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+shopt -s histappend
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+# Add an "alert" alias for long running commands.  Use like so:
+# sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
+fi
+
+# Change title of the bash tab. E.g title src_old
+function title {
+    echo -ne "\033]0;"$*"\007"
+}
 
 alias grep='grep -Hn --color'
+alias cat='cat -n'
 alias sl='ls'
-alias la='ls -Al'
+alias la='ls -Alh'
 alias l='ls -lAh'
 alias so='source'
 alias hn='hostname'
@@ -35,6 +65,12 @@ alias ece568='cd ~/Dropbox/4B_semester/ece568/'
 alias thesis_local='cd ~/Dropbox/4B_semester/thesis'
 alias thesis='cd /Volumes/FAT32_FORMA/thesis_dataset_manual_labeling/thesis/'
 alias vl='vim -c "normal '\''0"'    # vl to open last file opened in vim.
+alias vm='ssh root@10.120.250.212'
+alias vm_local_nat='ssh awang@192.168.153.128'
+alias v='vm_local_nat'
+alias v6='ssh root@192.168.153.129'
+alias v6_2='ssh root@192.168.153.130'
+alias vm_local='ssh awang@10.116.202.243'
 alias ecf='ssh -A wangze1@remote.ecf.utoronto.ca'
 alias cs='ssh -A zexuan@cs.toronto.edu'
 alias cdf='ssh -A c4wangze@cdf.utoronto.ca'
@@ -44,10 +80,17 @@ alias g18='ssh -A zexuan@guppy18.ais.sandbox'
 alias g8='ssh -A zexuan@guppy8.ais.sandbox'
 alias g3='ssh -A zexuan@guppy3.ais.sandbox'
 alias eecg='ssh -A wangze1@ug52.eecg.utoronto.ca -X'
+alias pi='ssh pi@198.244.107.112'
 alias rc='source ~/.bashrc'
-alias sec='vim ~/Desktop/receipt_pwd_safe/userName+pwd.txt'
+alias sec_pull='cd ~/Desktop/sec && git pull && openssl des3 -d -in ~/Desktop/sec/sec.enc -out ~/Desktop/sec/sec.txt && cd -'
+alias sec='vim ~/Desktop/sec/sec.txt'
+alias sec_push='openssl des3 -in ~/Desktop/sec/sec.txt -out ~/Desktop/sec/sec.enc && cd ~/Desktop/sec && git commit -m Update_password -a && git push && cd -'
 alias sublime='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
-export EDITOR=vim
+alias ck='ps aux | sort -nrk 3,3 | head -n 5'
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
+export HISTTIMEFORMAT='%F %T '
 # ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 pwd
 
@@ -89,3 +132,4 @@ __git_ps1_yelp () {
         fi
     fi
 }
+
