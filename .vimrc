@@ -33,7 +33,7 @@ Bundle 'vim-stylus'
 "Automatic Tex Plugin
 Bundle 'coot/atp_vim'
 "Auto completes endif/endfunction in vim script & Ruby.
-Bundle 'tpope/vim-endwise'
+" Bundle 'tpope/vim-endwise'
 "For Go programming language
 "Bundle 'fatih/vim-go'
 "Expand abbreviation, <c-y>,: activate; div>p#id$*3>a; select text + <c-y>,
@@ -107,6 +107,20 @@ Bundle 'simplyzhao/cscope_maps.vim'
 Bundle 'mileszs/ack.vim'
 "Search inside open buffer; map to <leader>/
 Bundle 'rking/ag.vim'
+" e    to open file and close the quickfix window
+" o    to open (same as enter)
+" go   to preview file (open but maintain focus on ag.vim results)
+" t    to open in new tab
+" T    to open in new tab silently
+" h    to open in horizontal split
+" H    to open in horizontal split silently
+" v    to open in vertical split
+" gv   to open in vertical split silently
+" q    to close the quickfix window
+" :HGblame to show who edits each file
+Bundle "vim-scripts/vcscommand.vim"
+Bundle 'jlfwong/vim-mercenary'
+Bundle "terryma/vim-multiple-cursors"
 
 nnoremap <leader>/ :Ack
 if executable('ag')
@@ -160,6 +174,11 @@ au VimEnter * RainbowParenthesesToggleAll
 " ==================== CTRLP_CONFIG ====================
 let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_match_window_reversed = 0
+" Setup some default ignores
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+    \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
 " Make the file open in new tab.
 " let g:ctrlp_prompt_mappings = {
 "     \ 'AcceptSelection("e")': ['<c-t>'],
@@ -236,9 +255,10 @@ inoremap <silent> <F9> <ESC>:YRShow<cr>
 
 " inoremap <esc> <nop>
 inoremap jk <Esc>
-inoremap kj <Esc>
+" inoremap kj <Esc>
 " vnoremap <esc> <nop>
-vnoremap kj <Esc>
+" vnoremap kj <Esc>
+vnoremap jk <Esc>
 " Enable cursor movement in insert mode
 inoremap <c-j> <down>
 inoremap <c-k> <up>
@@ -246,7 +266,8 @@ inoremap <c-l> <right>
 inoremap <c-h> <left>
 "
 
-map <S-s> :join<CR>
+nnoremap <S-s> :join<CR>
+nnoremap <S-l> /[,(]<CR>a<CR><Esc>:nohl<CR>
 noremap <S-j> 5j
 map <S-k> 5k
 nnoremap <space> <c-d>
@@ -591,7 +612,7 @@ set nowb
 set noswapfile
 " Tab settings
 set expandtab   " Set noexpandtab to enable \t
-set smarttab
+" set smarttab
 set shiftwidth=4
 set tabstop=4
 " set softtabstop=4
@@ -609,8 +630,9 @@ set formatoptions=qrn1
 " enable UNDO even after closing and reopening the file.
 set undofile
 " Indentation settings
-set autoindent
-set smartindent
+" set autoindent
+" set smartindent
+set cindent
 au! FileType python setl nosmartindent
 " Always hide the status line
 set laststatus=2
@@ -620,6 +642,9 @@ set showcmd
 set spell spelllang=en_us
 " Disable spell checking
 set spell!
+" Open new window on the right instead
+set splitbelow
+set splitright
 " Fix mis-spelled word with <leader>f
 nnoremap <leader>f 1z=
 " Toggle spell check with <leader>f
