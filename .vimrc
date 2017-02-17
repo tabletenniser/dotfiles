@@ -270,7 +270,7 @@ nnoremap <S-s> :join<CR>
 nnoremap <S-l> /[,(]<CR>a<CR><Esc>:nohl<CR>
 noremap <S-j> 5j
 map <S-k> 5k
-nnoremap <space> <c-d>
+nnoremap <space> <C-d>
 
 nmap <leader>c :find %:t:r.c<CR>
 nmap <leader>C :sf %:t:r.c<CR>
