@@ -102,7 +102,6 @@ Bundle 'simplyzhao/cscope_maps.vim'
 " Bundle 'rizzatti/dash.vim'
 
 "lustyExplorer
-"Bundle 'terryma/vim-multiple-cursors'
 "Search for keywords, sample usage: Ack -i 'word' folder
 Bundle 'mileszs/ack.vim'
 "Search inside open buffer; map to <leader>/
@@ -121,6 +120,18 @@ Bundle 'rking/ag.vim'
 Bundle "vim-scripts/vcscommand.vim"
 Bundle 'jlfwong/vim-mercenary'
 Bundle "terryma/vim-multiple-cursors"
+" Bundle 'Valloric/YouCompleteMe'
+
+" Fix conclict between Neo-complete and multiple-cursor
+function! Multiple_cursors_before()
+    exe 'NeoCompleteLock'
+    echo 'Disabled autocomplete'
+endfunction
+
+function! Multiple_cursors_after()
+    exe 'NeoCompleteUnlock'
+    echo 'Enabled autocomplete'
+endfunction
 
 nnoremap <leader>/ :Ack
 if executable('ag')
@@ -470,7 +481,7 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
+"
 ">Key Remappings
 ">==============
 
