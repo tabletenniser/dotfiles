@@ -53,7 +53,6 @@ function title {
 }
 
 alias grep='grep -Hn --color'
-alias cat='cat -n'
 alias sl='ls'
 alias la='ls -Alh'
 alias l='ls -lAh'
