@@ -1,5 +1,6 @@
 [user]
-	name = tabletenniser
 	email = tabletenniser@gmail.com
+	name = tabletenniser
 [core]
 	editor = vim
+	excludesfile = /Users/awang/dotfiles/.gitignore
