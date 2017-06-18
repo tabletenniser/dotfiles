@@ -6,8 +6,17 @@ Steps to install vim plugin:
 4. ln -s ~/dotfiles/.vimrc ~/.vimrc  
 5. vim ~/.vimrc  
 6. :PluginInstall  
-  
+
+Steps to set up fish:  
+1. apt-get install fish  
+2. chsh -s `which fish`  
+3. mkdir -p ~/.config/fish
+4. curl -L https://get.oh-my.fish | fish
+5. omf install agnoster bobthefish
+6. omf theme agnoster
+
 Steps to set up .bashrc, .bashprofile and .gitconfig:  
 1. ln -s ~/dotfiles/.bashrc ~/.bashrc  
 2. ln -s ~/dotfiles/.bash_profile ~/.bash_profile  
-3. ln -s ~/dotfiles/.gitconfig: ~/.gitconfig  
+3. ln -s ~/dotfiles/.gitconfig ~/.gitconfig  
+4. ln -s ~/dotfiles/config.fish ~/.config/fish/config.fish  
