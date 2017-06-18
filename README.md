@@ -14,6 +14,7 @@ Steps to set up fish:
 4. curl -L https://get.oh-my.fish | fish
 5. omf install agnoster bobthefish
 6. omf theme agnoster
+7. cp ~/.local/share/omf/themes/fishbone/fish_greeting.fish ~/.local/share/omf/themes/agnoster/
 
 Steps to set up .bashrc, .bashprofile and .gitconfig:  
 1. ln -s ~/dotfiles/.bashrc ~/.bashrc  
