@@ -9,12 +9,12 @@ Steps to install vim plugin:
 
 Steps to set up fish:  
 1. apt-get install fish  
-2. chsh -s `which fish`  
-3. mkdir -p ~/.config/fish
-4. curl -L https://get.oh-my.fish | fish
-5. omf install agnoster bobthefish
-6. omf theme agnoster
-7. cp ~/.local/share/omf/themes/fishbone/fish_greeting.fish ~/.local/share/omf/themes/agnoster/
+2. mkdir -p ~/.config/fish  
+3. curl -L https://get.oh-my.fish | fish  
+4. omf install agnoster bobthefish fishbone  
+5. cp ~/.local/share/omf/themes/fishbone/fish_greeting.fish ~/.local/share/omf/themes/agnoster/  
+6. omf theme agnoster  
+7. chsh -s `which fish`  
 
 Steps to set up .bashrc, .bashprofile and .gitconfig:  
 1. ln -s ~/dotfiles/.bashrc ~/.bashrc  
