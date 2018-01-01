@@ -1,4 +1,5 @@
 alias v="ssh awang@192.168.153.130"
+alias v2="ssh root@192.168.153.154"
 alias rc="source ~/.config/fish/config.fish"
 alias pi='ssh pi@198.244.107.112'
 alias sec_pull='cd ~/Desktop/sec; and git pull; and openssl des3 -d -in ~/Desktop/sec/sec.enc -out ~/Desktop/sec/sec.txt; and cd -'
