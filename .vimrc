@@ -12,6 +12,7 @@
 ">Terminal Colours
 set t_Co=256
 set cc=81
+set shell=/bin/bash
 ">Leader Key
 let mapleader = ","
 
@@ -92,6 +93,7 @@ Bundle 'tpope/vim-repeat'
 " Fix <c-a>/<c-x> for datetime increment/decrement.d<c-x> sets to current
 " local datetime.
 Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-dispatch'
 "Auto complete
 Bundle 'shougo/neocomplete'
 Bundle 'Shougo/neosnippet'
@@ -135,7 +137,7 @@ endfunction
 
 nnoremap <leader>/ :Ack
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --column'
 endif
 nmap <leader>a :tab split<CR>:Ack ''<left>
 nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
@@ -360,7 +362,7 @@ let g:solarized_termtrans = 1
 let g:solarized_termcolors = 256
 let g:solarized_contrast = "normal"
 let g:solarized_visibility = "normal"
-colorscheme solarized
+" colorscheme solarized
 
 set background=dark
 colorscheme wombat256
@@ -656,9 +658,9 @@ set spell!
 " Open new window on the right instead
 set splitbelow
 set splitright
-" Fix mis-spelled word with <leader>f
-nnoremap <leader>f 1z=
-" Toggle spell check with <leader>f
+" Ag current work with <leader>f
+nnoremap <leader>f :Ag <C-r><C-w>
+" Toggle spell check with <leader>s
 nnoremap <leader>s :set spell!<cr>
 " Strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
