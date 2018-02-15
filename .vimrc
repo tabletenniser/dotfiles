@@ -105,7 +105,7 @@ Bundle 'simplyzhao/cscope_maps.vim'
 
 "lustyExplorer
 "Search for keywords, sample usage: Ack -i 'word' folder
-Bundle 'mileszs/ack.vim'
+" Bundle 'mileszs/ack.vim'
 "Search inside open buffer; map to <leader>/
 Bundle 'rking/ag.vim'
 " e    to open file and close the quickfix window
@@ -135,12 +135,12 @@ function! Multiple_cursors_after()
     echo 'Enabled autocomplete'
 endfunction
 
-nnoremap <leader>/ :Ack
+nnoremap <leader>/ :Ag
 if executable('ag')
   let g:ackprg = 'ag --column'
 endif
-nmap <leader>a :tab split<CR>:Ack ''<left>
-nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
+nmap <leader>A :Ag ''<left>
+nmap <leader>a :Ag <C-r><C-w><CR>
 
 " ++++++++++++++++++++ Misc Upgrades ++++++++++++++++++++
 " Calender, invoked by :Cal 2015 09 10. E: event list; T: task list; ?:help.
