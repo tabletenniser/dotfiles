@@ -25,4 +25,5 @@ Steps to set up .bashrc, .bashprofile and .gitconfig:
 NOTE:  
 1. agnoster requires power line font to work (see ~/.local/share/omf/themes/agnoster/fish_prompt.fish), which can be installed from https://gist.github.com/1595572. Also require terminal setting (In iterm2, profile --> text --> Non ASCII key font) to use the powerline font installed.  
 2. Enable ctrl+R in fish (installation of fzf): brew install fzf  
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fz; and ~/.fzf/install
 To use it in vim, add the following to .vimrc: set rtp+=/usr/local/opt/fzf  
