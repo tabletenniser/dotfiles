@@ -1,7 +1,7 @@
-alias v="ssh awang@192.168.153.130"
-alias v2="ssh root@192.168.153.154"
+alias v="ssh zexuan@zexuan-linux.kir.corp.google.com"
+alias p="ssh-tmux zexuan@zexuan-linux.kir.corp.google.com performance"
 alias rc="source ~/.config/fish/config.fish"
-alias pi='ssh pi@198.244.107.112'
+alias pi='ssh tabletenniser@24.19.49.108'
 alias sec_pull='cd ~/Desktop/sec_new; and git pull; and openssl des3 -d -in ~/Desktop/sec_new/sec.enc -out ~/Desktop/sec_new/sec.txt; and cd -'
 alias sec='vim ~/Desktop/sec_new/sec.txt'
 alias sec_push='openssl des3 -in ~/Desktop/sec_new/sec.txt -out ~/Desktop/sec_new/sec.enc; and cd ~/Desktop/sec_new; and git commit -m Update_password_fish -a; and git push; and cd -'
@@ -21,7 +21,6 @@ set -g -x fish_greeting ''
 
 #echo "PATH before:", $PATH
 
-#set THINGS (bash -c "eval `/qumulotools/bin/environment --sh` && /usr/bin/printenv" | /bin/sed 's/export //g')
 #for line in $THINGS
 #    set KEY (echo $line | cut -d= -f1)
 #    set VAL (echo $line | cut -d= -f2)
@@ -37,17 +36,4 @@ set -g -x fish_greeting ''
 #    end
 #end
 
-#eval "/qumulotools/bin/environment --fish"
-#set fish_env (/qumulotools/bin/environment --fish)
-#eval $fish_env
-
-#echo "PATH after:", $PATH
-
-#set -gx PATH $PATH /usr/local/bin
-#set -gx PATH $PATH ~/.fzf/bin
-#set -gx PATH $PATH ~/src/tools/squirrel
-
-#echo "PATH actual:", $PATH
-
-alias testing='cd /google/code/'
-source /google/data/ro/teams/fish/google.fish
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish

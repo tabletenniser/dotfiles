@@ -6,6 +6,8 @@ fi
 export PATH=${PATH}:$ANDROID_HOME/bin
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 export PATH=/usr/local/mysql/bin:$PATH
+export PATH=$PATH:/anaconda3/bin
+alias python3='/anaconda3/bin/python'
 # export JAVA_HOME=`/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/`
 export JAVA_HOME=/Library/Java/Home
 # export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
