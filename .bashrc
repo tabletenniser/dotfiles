@@ -63,6 +63,8 @@ alias ece419='cd ~/Dropbox/4B_semester/ECE419/'
 alias ece568='cd ~/Dropbox/4B_semester/ece568/'
 alias thesis_local='cd ~/Dropbox/4B_semester/thesis'
 alias thesis='cd /Volumes/FAT32_FORMA/thesis_dataset_manual_labeling/thesis/'
+alias v='ssh zexuan@zexuan-linux.kir.corp.google.com'
+alias p="ssh-tmux zexuan@zexuan-linux.kir.corp.google.com performance"
 alias vl='vim -c "normal '\''0"'    # vl to open last file opened in vim.
 alias vm='ssh root@10.120.250.212'
 alias vm_local_nat='ssh awang@192.168.153.130'
@@ -71,13 +73,7 @@ alias vm_local='ssh awang@10.116.202.243'
 alias ecf='ssh -A wangze1@remote.ecf.utoronto.ca'
 alias cs='ssh -A zexuan@cs.toronto.edu'
 alias cdf='ssh -A c4wangze@cdf.utoronto.ca'
-alias g7='ssh -A zexuan@guppy7.ais.sandbox'
-alias g17='ssh -A zexuan@guppy17.ais.sandbox'
-alias g18='ssh -A zexuan@guppy18.ais.sandbox'
-alias g8='ssh -A zexuan@guppy8.ais.sandbox'
-alias g3='ssh -A zexuan@guppy3.ais.sandbox'
-alias eecg='ssh -A wangze1@ug52.eecg.utoronto.ca -X'
-alias pi='ssh pi@198.244.107.112'
+alias pi='ssh tabletenniser@24.19.49.108'
 alias rc='source ~/.bashrc'
 alias sec_pull='cd ~/Desktop/sec_new && git pull && openssl des3 -d -in ~/Desktop/sec_new/sec.enc -out ~/Desktop/sec_new/sec.txt && cd -'
 alias sec='vim ~/Desktop/sec_new/sec.txt'
@@ -131,3 +127,5 @@ __git_ps1_yelp () {
     fi
 }
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
