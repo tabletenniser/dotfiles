@@ -52,6 +52,7 @@ function title {
     echo -ne "\033]0;"$*"\007"
 }
 
+alias gh='hg'
 alias grep='grep -Hn --color'
 alias sl='ls'
 alias la='ls -Alh'

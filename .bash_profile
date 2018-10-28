@@ -22,3 +22,4 @@ export PATH="/Users/zexuanwang/anaconda/bin:$PATH"
 
 # added by Anaconda2 2.5.0 installer
 export PATH="/Users/tabletenniser/anaconda/bin:$PATH"
+export PATH="~/.local/bin:$PATH"
