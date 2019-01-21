@@ -1,7 +1,7 @@
 alias v="ssh zexuan@zexuan-linux.kir.corp.google.com"
 alias p="ssh-tmux zexuan@zexuan-linux.kir.corp.google.com performance"
 alias rc="source ~/.config/fish/config.fish"
-alias pi='ssh tabletenniser@24.19.49.108'
+alias pi='ssh tabletenniser@98.232.17.245'
 alias sec_pull='cd ~/Desktop/sec_new; and git pull; and openssl des3 -d -in ~/Desktop/sec_new/sec.enc -out ~/Desktop/sec_new/sec.txt; and cd -'
 alias sec='vim ~/Desktop/sec_new/sec.txt'
 alias sec_push='openssl des3 -in ~/Desktop/sec_new/sec.txt -out ~/Desktop/sec_new/sec.enc; and cd ~/Desktop/sec_new; and git commit -m Update_password_fish -a; and git push; and cd -'

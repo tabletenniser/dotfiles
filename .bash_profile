@@ -25,3 +25,6 @@ export PATH="/Users/zexuanwang/anaconda/bin:$PATH"
 # added by Anaconda2 2.5.0 installer
 export PATH="/Users/tabletenniser/anaconda/bin:$PATH"
 export PATH="~/.local/bin:$PATH"
+
+# Prefer openssl installed instead of default /usr/bin/openssl
+export PATH="/usr/local/opt/openssl/bin:$PATH"
