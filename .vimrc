@@ -23,6 +23,7 @@ let mapleader = ","
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/opt/fzf
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
@@ -626,9 +627,9 @@ set noswapfile
 " Tab settings
 set expandtab   " Set noexpandtab to enable \t
 " set smarttab
-set shiftwidth=4
-set tabstop=4
-" set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 " List settings: Set invisible characters
 set listchars=eol:$,tab:▸·,trail:·,extends:>,precedes:<
 set list

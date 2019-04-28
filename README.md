@@ -16,11 +16,16 @@ Steps to set up fish:
 6. omf theme agnoster  
 7. chsh -s `which fish`  
 
-Steps to set up .bashrc, .bashprofile and .gitconfig:  
+Steps to set up .bashrc, .bashprofile, .gitconfig:
 1. ln -s ~/dotfiles/.bashrc ~/.bashrc  
 2. ln -s ~/dotfiles/.bash_profile ~/.bash_profile  
 3. ln -s ~/dotfiles/.gitconfig ~/.gitconfig  
 4. ln -s ~/dotfiles/config.fish ~/.config/fish/config.fish  
+
+Steps to set up tmux:  
+1. Install TPM (Tmux Plugin Manager): git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm  
+2. ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf  
+3. ln -s ~/dotfiles/ssh-tmux /usr/local/bin/ssh-tmux  
 
 NOTE:  
 1. agnoster requires power line font to work (see ~/.local/share/omf/themes/agnoster/fish_prompt.fish), which can be installed from https://gist.github.com/1595572. Also require terminal setting (In iterm2, profile --> text --> Non ASCII key font) to use the powerline font installed.  

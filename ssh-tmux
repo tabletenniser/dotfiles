@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Configure these parameters
+sleep=5
+alive_interval=10
+host=$1
+session=$2
+
+if [ -z "$host" ] ; then
+  echo "Usage: $0 host-name [session-name]"
+  exit 1
+fi
+
+if [ -z "$session" ]; then
+  session="default"
+fi
+
+SSH_OPTS="-oCompression=yes -oCheckHostIP=no -oServerAliveInterval=$alive_interval"
+
+#tmux_cmd="tmx2 new -A -s $session"
+tmux_cmd="tmx2 attach -t $session"
+
+# Just keep reconnecting upon failure
+while [ 1 ]; do
+  ssh -t $host $SSH_OPTS "$tmux_cmd"
+
+  # Don't reconnect if disconnection not due to error (i.e., user detached)
+  if [ $? -eq 0 ]; then break; fi
+
+  echo "SSH connection lost, reconnecting in $sleep seconds..."
+  sleep $sleep
+done
