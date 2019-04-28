@@ -44,7 +44,7 @@ set -g -x fish_greeting ''
 
 #set -gx PATH $PATH /usr/local/bin
 #set -gx PATH $PATH ~/.fzf/bin
-set -gx PATH $PATH ~/src/tools/squirrel
+#set -gx PATH $PATH ~/src/tools/squirrel
 
 #echo "PATH actual:", $PATH
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
