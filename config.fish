@@ -38,8 +38,8 @@ set -g -x fish_greeting ''
 #end
 
 #eval "/qumulotools/bin/environment --fish"
-set fish_env (/qumulotools/bin/environment --fish)
-eval $fish_env
+#set fish_env (/qumulotools/bin/environment --fish)
+#eval $fish_env
 
 #echo "PATH after:", $PATH
 
