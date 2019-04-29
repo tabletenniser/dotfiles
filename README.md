@@ -7,14 +7,9 @@ Steps to install vim plugin:
 5. vim ~/.vimrc  
 6. :PluginInstall  
 
-Steps to set up fish:  
-1. apt-get install fish  
-2. mkdir -p ~/.config/fish  
-3. curl -L https://get.oh-my.fish | fish  
-4. omf install agnoster bobthefish fishbone  
-5. cp ~/.local/share/omf/themes/fishbone/fish_greeting.fish ~/.local/share/omf/themes/agnoster/  
-6. omf theme agnoster  
-7. chsh -s `which fish`  
+Steps to set up shell welcome screen:  
+1. sudo ln -s ~/dotfiles/motd.sh /etc/profile.d/
+2. Check /etc/ssh/sshd_config file to ensure all .sh files under /etc/profile.d folder gets executed.
 
 Steps to set up .bashrc, .bashprofile, .gitconfig:
 1. ln -s ~/dotfiles/.bashrc ~/.bashrc  
@@ -26,6 +21,15 @@ Steps to set up tmux:
 1. Install TPM (Tmux Plugin Manager): git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm  
 2. ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf  
 3. ln -s ~/dotfiles/ssh-tmux /usr/local/bin/ssh-tmux  
+
+Steps to set up fish:  
+1. apt-get install fish  
+2. mkdir -p ~/.config/fish  
+3. curl -L https://get.oh-my.fish | fish  
+4. omf install agnoster bobthefish fishbone  
+5. cp ~/.local/share/omf/themes/fishbone/fish_greeting.fish ~/.local/share/omf/themes/agnoster/  
+6. omf theme agnoster  
+7. chsh -s `which fish`  
 
 NOTE:  
 1. agnoster requires power line font to work (see ~/.local/share/omf/themes/agnoster/fish_prompt.fish), which can be installed from https://gist.github.com/1595572. Also require terminal setting (In iterm2, profile --> text --> Non ASCII key font) to use the powerline font installed.  
