@@ -11,11 +11,12 @@ Steps to set up shell welcome screen:
 1. sudo ln -s ~/dotfiles/motd.sh /etc/profile.d/
 2. Check /etc/ssh/sshd_config file to ensure all .sh files under /etc/profile.d folder gets executed.
 
-Steps to set up .bashrc, .bashprofile, .gitconfig:
+Steps to set up .bashrc, .bashprofile, .gitconfig, .dircolors:
 1. ln -s ~/dotfiles/.bashrc ~/.bashrc  
 2. ln -s ~/dotfiles/.bash_profile ~/.bash_profile  
 3. ln -s ~/dotfiles/.gitconfig ~/.gitconfig  
 4. ln -s ~/dotfiles/config.fish ~/.config/fish/config.fish  
+5. ln -s ~/dotfiles/.dircolors ~/.dircolors  
 
 Steps to set up tmux:  
 1. Install TPM (Tmux Plugin Manager): git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm  
