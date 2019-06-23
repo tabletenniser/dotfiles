@@ -36,4 +36,15 @@ set -g -x fish_greeting ''
 #    end
 #end
 
+#eval "/qumulotools/bin/environment --fish"
+#set fish_env (/qumulotools/bin/environment --fish)
+#eval $fish_env
+
+#echo "PATH after:", $PATH
+
+#set -gx PATH $PATH /usr/local/bin
+#set -gx PATH $PATH ~/.fzf/bin
+#set -gx PATH $PATH ~/src/tools/squirrel
+
+#echo "PATH actual:", $PATH
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
