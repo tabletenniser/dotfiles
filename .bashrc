@@ -25,6 +25,8 @@ export -f rgrep
 
 export CLICOLOR=:1
 export HISTSIZE=2000
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 HISTFILESIZE=3000
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
