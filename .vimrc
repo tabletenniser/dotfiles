@@ -27,6 +27,9 @@ set rtp+=/usr/local/opt/fzf
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
+" ++++++++++++++++++++ Tmux Integration ++++++++++++++++++++
+Plugin 'christoomey/vim-tmux-navigator'
+
 " ++++++++++++++++++++ Languages and Syntax ++++++++++++++++++++
 "HTML5 syntax autocomplete & highlighting (includes canvas & SVG)
 Bundle 'othree/html5.vim'
