@@ -127,6 +127,7 @@ Bundle "vim-scripts/vcscommand.vim"
 Bundle 'jlfwong/vim-mercenary'
 Bundle "terryma/vim-multiple-cursors"
 " Bundle 'Valloric/YouCompleteMe'
+Bundle "ConradIrwin/vim-bracketed-paste"
 
 " Fix conclict between Neo-complete and multiple-cursor
 function! Multiple_cursors_before()

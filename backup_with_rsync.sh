@@ -5,5 +5,5 @@ echo BEGIN `date` >> /var/log/backup.log
 # --delete: remove file if it exists in destination but not in source, rsync will leave those files along o.w
 # --append-verify instead of --append for rsync version 3.x
 # --ignore-existing to ignore files that already exist
-/usr/bin/caffeinate -s /usr/bin/rsync -ahv --append --progress /Volumes/External\ Drive/ /Volumes/ZW_EXFAT/ZW_BACKUP >> /var/log/backup.log
+/usr/bin/caffeinate -s /usr/local/bin/rsync -ahv --append-verify --progress --ignore-existing  --timeout=240 /Volumes/External\ Drive/ /Volumes/ZW_EXFAT/ZW_BACKUP >> /var/log/backup.log
 echo END `date` >> /var/log/backup.log
