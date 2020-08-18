@@ -16,8 +16,9 @@ Steps to set up .bashrc, .bashprofile, .gitconfig, .dircolors:
 1. ln -s ~/dotfiles/.bashrc ~/.bashrc  
 2. ln -s ~/dotfiles/.bash_profile ~/.bash_profile  
 3. ln -s ~/dotfiles/.gitconfig ~/.gitconfig  
-4. ln -s ~/dotfiles/config.fish ~/.config/fish/config.fish  
-5. ln -s ~/dotfiles/.dircolors ~/.dircolors  
+4. ln -s ~/dotfiles/.gitignore ~/.gitignore  
+5. ln -s ~/dotfiles/config.fish ~/.config/fish/config.fish  
+6. ln -s ~/dotfiles/.dircolors ~/.dircolors  
 
 Steps to set up tmux:  
 1. Install TPM (Tmux Plugin Manager): git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm  
