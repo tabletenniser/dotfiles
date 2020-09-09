@@ -86,6 +86,7 @@ alias ecf='ssh -A wangze1@remote.ecf.utoronto.ca'
 alias cs='ssh -A zexuan@cs.toronto.edu'
 alias cdf='ssh -A c4wangze@cdf.utoronto.ca'
 alias pi='ssh -X tabletenniser@tabletenniser.ddns.net'
+alias pi2='ssh -X tabletenniser@tabletenniser-chat.ddns.net'
 # alias pi='ssh tabletenniser@98.232.17.245'
 alias rc='source ~/.bashrc'
 alias sec_pull='cd ~/Desktop/sec_new && git pull && openssl des3 -d -in ~/Desktop/sec_new/sec.enc -out ~/Desktop/sec_new/sec.txt && cd -'
@@ -142,3 +143,6 @@ __git_ps1_yelp () {
 }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if [ -f ~/private_dotfiles/.bashrc ]; then
+   source ~/private_dotfiles/.bashrc
+fi
