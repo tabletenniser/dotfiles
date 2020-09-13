@@ -644,10 +644,10 @@ set formatoptions=qrn1
 " enable UNDO even after closing and reopening the file.
 set undofile
 " Indentation settings
-" set autoindent
-" set smartindent
+set autoindent
+set smartindent
 set cindent
-au! FileType python setl nosmartindent
+" au! FileType python setl nosmartindent
 " Always hide the status line
 set laststatus=2
 " Show what command I am typing, useful when many .vimrc settings.
