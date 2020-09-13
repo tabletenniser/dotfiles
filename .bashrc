@@ -24,20 +24,24 @@ function rgrep(){
 export -f rgrep
 
 export CLICOLOR=:1
-export HISTSIZE=2000
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-HISTFILESIZE=3000
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
+
+# History control
+export HISTSIZE=20000
+HISTFILESIZE=30000
+HISTCONTROL=ignoredups:erasedups  
 shopt -s histappend
+# After each command, append to the history file and reread it
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 # Add an "alert" alias for long running commands.  Use like so:
 # sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -66,14 +70,23 @@ alias ece419='cd ~/Dropbox/4B_semester/ECE419/'
 alias ece568='cd ~/Dropbox/4B_semester/ece568/'
 alias thesis_local='cd ~/Dropbox/4B_semester/thesis'
 alias thesis='cd /Volumes/FAT32_FORMA/thesis_dataset_manual_labeling/thesis/'
-alias v='ssh zexuan@zexuan-linux.kir.corp.google.com'
-alias p="ssh-tmux zexuan@zexuan-linux.kir.corp.google.com performance"
+alias v='ssh -X zexuan@zexuan-linux.kir.corp.google.com'
+alias vc='ssh -X zexuan@zexuan.mtv.corp.google.com'
+alias e="ssh-tmux zexuan@zexuan-linux.kir.corp.google.com endor"
+# alias ec="ssh-tmux zexuan@zexuan.mtv.corp.google.com endor"
+alias ec="ssh -X zexuan@zexuan.mtv.corp.google.com -t -- /bin/bash -c \"prodcertstatus || prodaccess; tmx2 new -A -s endor\""
+alias p="ssh-tmux zexuan@zexuan-linux.kir.corp.google.com perf"
+# alias pc="ssh-tmux zexuan@zexuan.mtv.corp.google.com perf"
+alias pc="ssh -X zexuan@zexuan.mtv.corp.google.com -t -- /bin/bash -c \"prodcertstatus || prodaccess; tmx2 new -A -s perf\""
+alias p2="ssh-tmux zexuan@zexuan-linux.kir.corp.google.com perf2"
+alias t="ssh-tmux zexuan@zexuan-linux.kir.corp.google.com test"
+alias tc="ssh-tmux zexuan@zexuan.mtv.corp.google.com test"
 alias vl='vim -c "normal '\''0"'    # vl to open last file opened in vim.
-alias v='ssh zexuan@zexuan-linux.kir.corp.google.com'
 alias ecf='ssh -A wangze1@remote.ecf.utoronto.ca'
 alias cs='ssh -A zexuan@cs.toronto.edu'
 alias cdf='ssh -A c4wangze@cdf.utoronto.ca'
-alias pi='ssh tabletenniser@tabletenniser.ddns.net'
+alias pi='ssh -X tabletenniser@tabletenniser.ddns.net'
+alias pi2='ssh -X tabletenniser@tabletenniser-chat.ddns.net'
 # alias pi='ssh tabletenniser@98.232.17.245'
 alias rc='source ~/.bashrc'
 alias sec_pull='cd ~/Desktop/sec_new && git pull && openssl des3 -d -in ~/Desktop/sec_new/sec.enc -out ~/Desktop/sec_new/sec.txt && cd -'
@@ -82,6 +95,7 @@ alias sec_push='openssl des3 -in ~/Desktop/sec_new/sec.txt -out ~/Desktop/sec_ne
 alias sublime='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
 alias ck='ps aux | sort -nrk 3,3 | head -n 5'
 alias gc='cd ~/google_code_jam/2017_1C/'
+alias p3='python3'
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -89,9 +103,9 @@ export HISTTIMEFORMAT='%F %T '
 # ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 pwd
 
-function cd(){
-	builtin cd "$@" && ls
-}
+# function cd(){
+# 	builtin cd "$@" && ls
+# }
 
 PS1='\[\e[1;34m\]\u\[\e[0;39m\]@\[\e[1;32m\]\h\[\e[0;39m\]:\[\e[1;33m\]\w\[\e[0;39m\]$(__git_ps1_yelp " \[\e[1;36m\](%s)\[\e[0;39m\] ")\$ '
 __git_ps1_yelp () {
@@ -128,5 +142,7 @@ __git_ps1_yelp () {
     fi
 }
 
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if [ -f ~/private_dotfiles/.bashrc ]; then
+   source ~/private_dotfiles/.bashrc
+fi

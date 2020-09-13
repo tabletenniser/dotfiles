@@ -27,6 +27,9 @@ set rtp+=/usr/local/opt/fzf
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
+" ++++++++++++++++++++ Tmux Integration ++++++++++++++++++++
+Plugin 'christoomey/vim-tmux-navigator'
+
 " ++++++++++++++++++++ Languages and Syntax ++++++++++++++++++++
 "HTML5 syntax autocomplete & highlighting (includes canvas & SVG)
 Bundle 'othree/html5.vim'
@@ -124,6 +127,7 @@ Bundle "vim-scripts/vcscommand.vim"
 Bundle 'jlfwong/vim-mercenary'
 Bundle "terryma/vim-multiple-cursors"
 " Bundle 'Valloric/YouCompleteMe'
+Bundle "ConradIrwin/vim-bracketed-paste"
 
 " Fix conclict between Neo-complete and multiple-cursor
 function! Multiple_cursors_before()

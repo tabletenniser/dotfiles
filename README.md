@@ -2,6 +2,7 @@
 Steps to install vim plugin:  
 1. cd ~  
 2. run: git clone git@github.com:tabletenniser/dotfiles.git  
+For read only repo, use ssh: git clone https://github.com/tabletenniser/dotfiles.git  
 3. Install Vundle: git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim  
 4. ln -s ~/dotfiles/.vimrc ~/.vimrc  
 5. vim ~/.vimrc  
@@ -15,8 +16,9 @@ Steps to set up .bashrc, .bashprofile, .gitconfig, .dircolors:
 1. ln -s ~/dotfiles/.bashrc ~/.bashrc  
 2. ln -s ~/dotfiles/.bash_profile ~/.bash_profile  
 3. ln -s ~/dotfiles/.gitconfig ~/.gitconfig  
-4. ln -s ~/dotfiles/config.fish ~/.config/fish/config.fish  
-5. ln -s ~/dotfiles/.dircolors ~/.dircolors  
+4. ln -s ~/dotfiles/.gitignore ~/.gitignore  
+5. ln -s ~/dotfiles/config.fish ~/.config/fish/config.fish  
+6. ln -s ~/dotfiles/.dircolors ~/.dircolors  
 
 Steps to set up tmux:  
 1. Install TPM (Tmux Plugin Manager): git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm  
@@ -35,5 +37,6 @@ Steps to set up fish:
 NOTE:  
 1. agnoster requires power line font to work (see ~/.local/share/omf/themes/agnoster/fish_prompt.fish), which can be installed from https://gist.github.com/1595572. Also require terminal setting (In iterm2, profile --> text --> Non ASCII key font) to use the powerline font installed.  
 2. Enable ctrl+R in fish (installation of fzf): brew install fzf  
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fz; and ~/.fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; and ~/.fzf/install  
+(Note: apt-get install fzf will not enable ctrl-R keybinding by default.)  
 To use it in vim, add the following to .vimrc: set rtp+=/usr/local/opt/fzf  
