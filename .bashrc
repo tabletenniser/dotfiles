@@ -98,9 +98,9 @@ export HISTTIMEFORMAT='%F %T '
 # ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 pwd
 
-function cd(){
-	builtin cd "$@" && ls
-}
+# function cd(){
+# 	builtin cd "$@" && ls
+# }
 
 PS1='\[\e[1;34m\]\u\[\e[0;39m\]@\[\e[1;32m\]\h\[\e[0;39m\]:\[\e[1;33m\]\w\[\e[0;39m\]$(__git_ps1_yelp " \[\e[1;36m\](%s)\[\e[0;39m\] ")\$ '
 __git_ps1_yelp () {
