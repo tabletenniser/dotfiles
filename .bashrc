@@ -65,32 +65,12 @@ alias la='ls -Alh'
 alias l='ls -lAh'
 alias so='source'
 alias hn='hostname'
-alias capstone='cd ~/Dropbox/4B_semester/capstone'
-alias ece419='cd ~/Dropbox/4B_semester/ECE419/'
-alias ece568='cd ~/Dropbox/4B_semester/ece568/'
-alias thesis_local='cd ~/Dropbox/4B_semester/thesis'
-alias thesis='cd /Volumes/FAT32_FORMA/thesis_dataset_manual_labeling/thesis/'
-alias v='ssh zexuan@zexuan-linux.kir.corp.google.com'
-alias vc='ssh zexuan@zexuan.mtv.corp.google.com'
-alias e="ssh-tmux zexuan@zexuan-linux.kir.corp.google.com endor"
-alias ec="ssh-tmux zexuan@zexuan.mtv.corp.google.com endor"
-alias p="ssh-tmux zexuan@zexuan-linux.kir.corp.google.com perf"
-alias pc="ssh-tmux zexuan@zexuan.mtv.corp.google.com perf"
-alias p2="ssh-tmux zexuan@zexuan-linux.kir.corp.google.com perf2"
-alias t="ssh-tmux zexuan@zexuan-linux.kir.corp.google.com test"
-alias tc="ssh-tmux zexuan@zexuan.mtv.corp.google.com test"
 alias vl='vim -c "normal '\''0"'    # vl to open last file opened in vim.
-alias ecf='ssh -A wangze1@remote.ecf.utoronto.ca'
-alias cs='ssh -A zexuan@cs.toronto.edu'
-alias cdf='ssh -A c4wangze@cdf.utoronto.ca'
-alias pi='ssh tabletenniser@tabletenniser.ddns.net'
 # alias pi='ssh tabletenniser@98.232.17.245'
 alias rc='source ~/.bashrc'
-alias sec_pull='cd ~/Desktop/sec_new && git pull && openssl des3 -d -in ~/Desktop/sec_new/sec.enc -out ~/Desktop/sec_new/sec.txt && cd -'
-alias sec='vim ~/Desktop/sec_new/sec.txt'
-alias sec_push='openssl des3 -in ~/Desktop/sec_new/sec.txt -out ~/Desktop/sec_new/sec.enc && cd ~/Desktop/sec_new && git commit -m Update_password -a && git push && cd -'
 alias sublime='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
 alias ck='ps aux | sort -nrk 3,3 | head -n 5'
+alias p3='python3'
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -137,5 +117,7 @@ __git_ps1_yelp () {
     fi
 }
 
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if [ -f ~/private_dotfiles/.bashrc ]; then
+   source ~/private_dotfiles/.bashrc
+fi
