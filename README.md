@@ -24,6 +24,7 @@ Steps to set up tmux:
 1. Install TPM (Tmux Plugin Manager): git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm  
 2. ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf  
 3. ln -s ~/dotfiles/ssh-tmux /usr/local/bin/ssh-tmux  
+4. Open tmux and do "ctrl-A + I" to fetch and install all plugins  
 
 Steps to set up fish:  
 1. apt-get install fish  
