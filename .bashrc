@@ -24,8 +24,8 @@ function rgrep(){
 export -f rgrep
 
 export CLICOLOR=:1
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 
 # History control
 export HISTSIZE=20000
@@ -71,6 +71,7 @@ alias rc='source ~/.bashrc'
 alias sublime='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
 alias ck='ps aux | sort -nrk 3,3 | head -n 5'
 alias p3='python3'
+alias python='python3'
 
 export VISUAL=vim
 export EDITOR="$VISUAL"

@@ -3,4 +3,3 @@
 	name = tabletenniser
 [core]
 	editor = vim
-	excludesfile = /Users/awang/dotfiles/.gitignore
