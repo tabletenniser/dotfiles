@@ -99,7 +99,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-dispatch'
 "Auto complete
-Bundle 'ycm-core/YouCompleteMe'
+" Bundle 'ycm-core/YouCompleteMe'
 " Bundle 'shougo/neocomplete'
 " Bundle 'Shougo/neosnippet'
 " Bundle 'Shougo/neosnippet-snippets'
@@ -127,7 +127,7 @@ Bundle 'rking/ag.vim'
 Bundle "vim-scripts/vcscommand.vim"
 Bundle 'jlfwong/vim-mercenary'
 Bundle "terryma/vim-multiple-cursors"
-" Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 Bundle "ConradIrwin/vim-bracketed-paste"
 
 nnoremap <leader>/ :Ag
