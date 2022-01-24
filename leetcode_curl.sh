@@ -1,0 +1,13 @@
+# Useful shell script that alerts when a open spot is available.
+# i=3
+# echo `$(i)`
+for i in {0..5000}
+do
+  resp=`curl "https://leetcode.com/contest/api/ranking/weekly-contest-277/?pagination=${i}&region=global"   -H 'authority: leetcode.com'   -H 'sec-ch-ua: " Not;A Brand";v="99", "Google Chrome";v="97", "Chromium";v="97"'   -H 'x-newrelic-id: UAQDVFVRGwEAXVlbBAg='   -H 'sec-ch-ua-mobile: ?0'   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36'   -H 'content-type: application/json'   -H 'accept: application/json, text/javascript, */*; q=0.01'   -H 'x-requested-with: XMLHttpRequest'   -H 'sec-ch-ua-platform: "macOS"'   -H 'sec-fetch-site: same-origin'   -H 'sec-fetch-mode: cors'   -H 'sec-fetch-dest: empty'   -H 'referer: https://leetcode.com/contest/weekly-contest-277/ranking/34/'   -H 'accept-language: en-US,en;q=0.9'   -H 'cookie: _ga=GA1.2.651031474.1632018426; gr_user_id=dd0c1f2b-85ef-479a-bef7-53a95ea157c7; 87b5a3c3f1a55520_gr_last_sent_cs1=aaron62; __utmc=217727755; csrftoken=j3geo0YsqpUIOusnjXHH7P3DHblDDVuq3U2DwDbC5DNVvFUF3JcU6OBnS7coVM1K; messages="c733dcfa79752f5f6f7f914014cb594f3048134d$[[\"__json_message\"\0540\05425\054\"Successfully signed in as aaron62.\"]]"; LEETCODE_SESSION=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMzI0MTU4IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiYWxsYXV0aC5hY2NvdW50LmF1dGhfYmFja2VuZHMuQXV0aGVudGljYXRpb25CYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZGYxOTljZjYwNWJhZTEzOGI2OThkNTZmMGJkYjk2ODkxMjM2OThlZCIsImlkIjozMjQxNTgsImVtYWlsIjoidGFibGV0ZW5uaXNlckBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFhcm9uNjIiLCJ1c2VyX3NsdWciOiJhYXJvbjYyIiwiYXZhdGFyIjoiaHR0cHM6Ly9hc3NldHMubGVldGNvZGUuY29tL3VzZXJzL2Fhcm9uNjIvYXZhdGFyXzE1NDg4MjEzMzMucG5nIiwicmVmcmVzaGVkX2F0IjoxNjQyNzQ1MTAwLCJpcCI6IjczLjk3LjEzMS4xMDkiLCJpZGVudGl0eSI6IjhmZmVjMzg3ODE3NDhjMDdjNmQyZTcxYjQ1MWUyZTI4Iiwic2Vzc2lvbl9pZCI6MTY1MzI5MDJ9.ZmjnzxT8emZbjTbdJkctzaIR7TqWlx-Y2WoIt88kS-Y; __utmz=217727755.1642754012.38.8.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); c_a_u="YWFyb242Mg==:1nApNz:jOkymE5NY08h1eB7MVV_8ErbgWc"; _gid=GA1.2.1168182618.1642904967; __atuvc=3%7C1%2C6%7C2%2C4%7C3; 87b5a3c3f1a55520_gr_session_id=5e41ba43-37d3-4623-80b4-278cbb237a99; 87b5a3c3f1a55520_gr_last_sent_sid_with_cs1=5e41ba43-37d3-4623-80b4-278cbb237a99; 87b5a3c3f1a55520_gr_session_id_5e41ba43-37d3-4623-80b4-278cbb237a99=true; __utma=217727755.651031474.1632018426.1642910276.1642916704.42; __utmb=217727755.4.9.1642916707923; 87b5a3c3f1a55520_gr_cs1=aaron62; _gat=1'   --compressed 2>/dev/null | grep -q woshi771`
+  if [[ $? -eq 0 ]]; then
+    echo $i
+  fi
+  # echo $i
+  # echo $resp
+  sleep 0.001;
+done
