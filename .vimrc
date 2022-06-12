@@ -99,9 +99,10 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-dispatch'
 "Auto complete
-Bundle 'shougo/neocomplete'
-Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/neosnippet-snippets'
+" Bundle 'ycm-core/YouCompleteMe'
+" Bundle 'shougo/neocomplete'
+" Bundle 'Shougo/neosnippet'
+" Bundle 'Shougo/neosnippet-snippets'
 Bundle 'simplyzhao/cscope_maps.vim'
 "dash.app inside vim, some offline code API
 " Bundle 'rizzatti/funcoo.vim'
@@ -126,19 +127,8 @@ Bundle 'rking/ag.vim'
 Bundle "vim-scripts/vcscommand.vim"
 Bundle 'jlfwong/vim-mercenary'
 Bundle "terryma/vim-multiple-cursors"
-" Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 Bundle "ConradIrwin/vim-bracketed-paste"
-
-" Fix conclict between Neo-complete and multiple-cursor
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-    echo 'Disabled autocomplete'
-endfunction
-
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-    echo 'Enabled autocomplete'
-endfunction
 
 nnoremap <leader>/ :Ag
 if executable('ag')
@@ -395,59 +385,59 @@ endif
 ">Shougo/neocomplete
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
+" let g:acp_enableAtStartup = 0
+" " Use neocomplete.
+" let g:neocomplete#enable_at_startup = 1
+" " Use smartcase.
+" let g:neocomplete#enable_smart_case = 1
+" " Set minimum syntax keyword length.
+" let g:neocomplete#sources#syntax#min_keyword_length = 3
+" let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"
+" " Define dictionary.
+" let g:neocomplete#sources#dictionary#dictionaries = {
+"     \ 'default' : '',
+"     \ 'vimshell' : $HOME.'/.vimshell_hist',
+"     \ 'scheme' : $HOME.'/.gosh_completions'
+"         \ }
+"
+" " Define keyword.
+" if !exists('g:neocomplete#keyword_patterns')
+"     let g:neocomplete#keyword_patterns = {}
+" endif
+" let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+"
+" " Recommended key-mappings.
+" " <CR>: close popup and save indent.
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function()
+"   return neocomplete#close_popup() . "\<CR>"
+"   " For no inserting <CR> key.
+"   "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+" endfunction
 
 " Plugin key-mappings.
-imap <C-s>     <Plug>(neosnippet_expand_or_jump)
-smap <C-s>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-s>     <Plug>(neosnippet_expand_target)
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+" imap <C-s>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-s>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-s>     <Plug>(neosnippet_expand_target)
+" " SuperTab like snippets behavior.
+" imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand_or_jump)"
+" \: pumvisible() ? "\<C-n>" : "\<TAB>"
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand_or_jump)"
+" \: "\<TAB>"
+" " For conceal markers.
+" if has('conceal')
+"   set conceallevel=2 concealcursor=niv
+" endif
 
 " <TAB>: completion.
 " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
+" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-y>  neocomplete#close_popup()
+" inoremap <expr><C-e>  neocomplete#cancel_popup()
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
 
@@ -478,16 +468,16 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 set conceallevel=0
 
 " Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+"   let g:neocomplete#sources#omni#input_patterns = {}
+" endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+" let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "
 ">Key Remappings
 ">==============
@@ -614,10 +604,10 @@ set visualbell
 set t_vb=
 " Attempt to turn on encoding
 set encoding=utf8
-try
-  lang en_US
-catch
-endtry
+" try
+"   lang en_US
+" catch
+" endtry
 " Show the line number
 set number
 " Enable syntax highlighting
@@ -648,10 +638,10 @@ set formatoptions=qrn1
 " enable UNDO even after closing and reopening the file.
 set undofile
 " Indentation settings
-" set autoindent
-" set smartindent
+set autoindent
+set smartindent
 set cindent
-au! FileType python setl nosmartindent
+" au! FileType python setl nosmartindent
 " Always hide the status line
 set laststatus=2
 " Show what command I am typing, useful when many .vimrc settings.
