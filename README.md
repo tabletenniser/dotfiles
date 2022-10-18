@@ -9,7 +9,7 @@ For read only repo, use ssh: git clone https://github.com/tabletenniser/dotfiles
 6. :PluginInstall  
 
 NOTE: 
-To install vim with +lua support:
+To install vim with +lua and +python3 support:
 * Linux:
   build vim from scratch with +lua:  
   sudo apt-get install vim-nox 
@@ -17,6 +17,8 @@ To install vim with +lua support:
 
 * Mac
 `brew install vim --HEAD --override-system-vim` and add `export PATH="/opt/homebrew/bin:$PATH"` to ~/.bash_profile
+
+* Check https://github.com/ycm-core/YouCompleteMe/blob/master/README.md#macos if you have trouble getting YouCompleteMe to work.
 
 Steps to set up shell welcome screen:  
 1. sudo ln -s ~/dotfiles/motd.sh /etc/profile.d/
@@ -47,7 +49,7 @@ Steps to set up fish:
 
 NOTE:  
 1. agnoster requires power line font to work (see ~/.local/share/omf/themes/agnoster/fish_prompt.fish), which can be installed from https://gist.github.com/1595572. Also require terminal setting (In iterm2, profile --> text --> Non ASCII key font) to use the powerline font installed.  
-2. Enable ctrl+R in fish (installation of fzf): brew install fzf  
+2. Enable ctrl+R in fish (installation of fzf): `brew install fzf` and `$(brew --prefix)/opt/fzf/install`   
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; and ~/.fzf/install  
 (Note: apt-get install fzf will not enable ctrl-R keybinding by default.)  
 To use it in vim, add the following to .vimrc: set rtp+=/usr/local/opt/fzf  
