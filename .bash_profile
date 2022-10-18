@@ -22,3 +22,7 @@ export PATH
 
 # Prefer openssl installed instead of default /usr/bin/openssl
 export PATH="/usr/local/opt/openssl@1.1/bin/:$PATH"
+export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:$PATH"
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"

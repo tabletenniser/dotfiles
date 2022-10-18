@@ -8,6 +8,16 @@ For read only repo, use ssh: git clone https://github.com/tabletenniser/dotfiles
 5. vim ~/.vimrc  
 6. :PluginInstall  
 
+NOTE: 
+To install vim with +lua support:
+* Linux:
+  build vim from scratch with +lua:  
+  sudo apt-get install vim-nox 
+  https://gist.github.com/akolosov/cedaac86b333a4ced95f 
+
+* Mac
+`brew install vim --HEAD --override-system-vim` and add `export PATH="/opt/homebrew/bin:$PATH"` to ~/.bash_profile
+
 Steps to set up shell welcome screen:  
 1. sudo ln -s ~/dotfiles/motd.sh /etc/profile.d/
 2. Check /etc/ssh/sshd_config file to ensure all .sh files under /etc/profile.d folder gets executed.
