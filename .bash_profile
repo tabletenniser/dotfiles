@@ -27,3 +27,13 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+alias python3='python3.9'
+alias python='python3.9'
+alias pip='pip3.9'
+alias pip3='pip3.9'
+
+eval "$(nodenv init -)"
+
+# Duolingo CLI - https://github.com/duolingo/cli
+. "${HOME}/.duolingo/init.sh"

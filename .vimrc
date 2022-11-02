@@ -11,7 +11,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ">Terminal Colours
 set t_Co=256
-set cc=81
+set cc=99
 set shell=/bin/bash
 ">Leader Key
 let mapleader = ","
@@ -144,10 +144,24 @@ Bundle 'itchyny/calendar.vim'
 " let g:calendar_google_calendar = 1
 " let g:calendar_google_task = 1
 " Integrate git inside vim
-" Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rhubarb'
+nnoremap <Leader>gb :.Gbrowse<CR>
+vnoremap <Leader>gb :Gbrowse<CR>
 "To create gist: a simple way to share snippets.
 " Bundle 'mattn/gist-vim'
 " Bundle 'mattn/webapi-vim'
+Bundle 'airblade/vim-gitgutter'
+" Use fontawesome icons as signs
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '>'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = '<'
+let g:gitgutter_override_sign_column_highlight = 1
+" highlight SignColumn guibg=bg
+" highlight SignColumn ctermbg=bg
+set updatetime=250
 
 call vundle#end()            " required
 filetype plugin indent on    " required
