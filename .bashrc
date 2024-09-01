@@ -59,7 +59,6 @@ function title {
     echo -ne "\033]0;"$*"\007"
 }
 
-alias gh='hg'
 alias grep='grep -Hn --color'
 alias sl='ls'
 alias la='ls -Alh'
@@ -69,10 +68,11 @@ alias hn='hostname'
 alias vl='vim -c "normal '\''0"'    # vl to open last file opened in vim.
 # alias pi='ssh tabletenniser@98.232.17.245'
 alias rc='source ~/.bashrc'
-alias sublime='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
+alias sublime='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias ck='ps aux | sort -nrk 3,3 | head -n 5'
 alias p3='python3'
 alias python='python3'
+alias curltime="curl -w \"@$HOME/dotfiles/curl_format.txt\" -o /dev/null -s "
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -123,3 +123,9 @@ __git_ps1_yelp () {
 if [ -f ~/private_dotfiles/.bashrc ]; then
    source ~/private_dotfiles/.bashrc
 fi
+eval "$(github-copilot-cli alias -- "$0")"
+export JAVA_8_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+
+# Created by `pipx` on 2024-07-09 23:29:07
+export PATH="$PATH:/Users/aaronwang/.local/bin"

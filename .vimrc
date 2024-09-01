@@ -52,6 +52,7 @@ Plugin 'rainbow_parentheses.vim'
 Plugin 'fencview.vim'
 " let g:fencview_autodetect = 1
 " let g:fencview_auto_patterns='*'
+Plugin 'udalov/kotlin-vim'
 
 " ++++++++++++++++++++ UI Upgrades ++++++++++++++++++++
 "F4: toggle summary view; ctags -R: allows <c-]> to go to definition.
@@ -78,8 +79,11 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized'
 "~500 schemes, use colorscheme to set
 Bundle "flazz/vim-colorschemes"
+Bundle "leafgarland/typescript-vim"
+Bundle "Quramy/tsuquyomi"
 
 " ++++++++++++++++++++ Editing Upgrades ++++++++++++++++++++
+Bundle 'jremmen/vim-ripgrep'
 "F9: toggle yank history. ctrl+p/n: last/previous yank
 Bundle 'YankRing.vim'
 "s: search in both dir; <leader>j/k: multiple lines up/down
@@ -99,7 +103,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-dispatch'
 "Auto complete
-" Bundle 'ycm-core/YouCompleteMe'
+Bundle 'ycm-core/YouCompleteMe'
 " Bundle 'shougo/neocomplete'
 " Bundle 'Shougo/neosnippet'
 " Bundle 'Shougo/neosnippet-snippets'
@@ -127,17 +131,18 @@ Bundle 'rking/ag.vim'
 Bundle "vim-scripts/vcscommand.vim"
 Bundle 'jlfwong/vim-mercenary'
 Bundle "terryma/vim-multiple-cursors"
-Bundle 'Valloric/YouCompleteMe'
+" Bundle 'Valloric/YouCompleteMe'
 Bundle "ConradIrwin/vim-bracketed-paste"
 
-nnoremap <leader>/ :Ag
+nnoremap <leader>/ :Rg
 if executable('ag')
   let g:ackprg = 'ag --column'
 endif
-nmap <leader>A :Ag ''<left>
-nmap <leader>a :Ag <C-r><C-w><CR>
+nmap <leader>A :Rg ''<left>
+nmap <leader>a :Rg <C-r><C-w><CR>
 
 " ++++++++++++++++++++ Misc Upgrades ++++++++++++++++++++
+" Bundle 'kkoomen/gfi.vim'
 " Calender, invoked by :Cal 2015 09 10. E: event list; T: task list; ?:help.
 " :Cal -view=year/clock; >/<: switch between views
 Bundle 'itchyny/calendar.vim'
@@ -257,6 +262,9 @@ let g:tagbar_type_go = {
 nnoremap <leader>. :CtrlPTag<cr>
 
 " ==================== KEY REMAPPINGS ====================
+imap <c-]> <Plug>(copilot-next)
+imap <c-[> <Plug>(copilot-previous)
+
 map <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <Esc>:NERDTreeToggle<CR>
 
@@ -294,6 +302,7 @@ noremap <S-j> 5j
 map <S-k> 5k
 nnoremap <space> <C-d>
 
+nmap <leader>g :find <C-r><C-w>
 nmap <leader>c :find %:t:r.c<CR>
 nmap <leader>C :sf %:t:r.c<CR>
 
@@ -478,7 +487,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " vim is dumb with .json files, treat them as javascript
-" autocmd BufNewFile,BufRead *.json set ft=javascript
+autocmd BufNewFile,BufRead *.json set ft=javascript
 set conceallevel=0
 
 " Enable heavy omni completion.
@@ -667,8 +676,8 @@ set spell!
 " Open new window on the right instead
 set splitbelow
 set splitright
-" Ag current work with <leader>f
-nnoremap <leader>f :Ag <C-r><C-w>
+" Rg current work with <leader>f
+nnoremap <leader>f :Rg <C-r><C-w>
 " Toggle spell check with <leader>s
 nnoremap <leader>s :set spell!<cr>
 " Strip all trailing whitespace in the current file
@@ -874,7 +883,7 @@ function! VisualSelection(direction, extra_filter) range
     if a:direction == 'b'
         execute "normal ?" . l:pattern . "^M"
     elseif a:direction == 'gv'
-        call CmdLine("Ag \"" . l:pattern . "\" " )
+        call CmdLine("Rg \"" . l:pattern . "\" " )
     elseif a:direction == 'replace'
         call CmdLine("%s" . '/'. l:pattern . '/')
     elseif a:direction == 'f'
@@ -884,3 +893,5 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+set path+=./web/src/**
+set suffixesadd=.js,.jsx,.ts,.tsx,.d.ts,.vue,/package.json
