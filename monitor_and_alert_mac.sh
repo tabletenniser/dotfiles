@@ -1,7 +1,7 @@
 # Useful shell script that alerts when a open spot is available.
 while :;
-do clear;
-  echo "Checking for open spot..."
+do
+  echo "Checking for open spot at time: $(date)"
   curl 'https://www.omnipong.com/T-tourney.asp?t=102&r=4084&h='  --compressed 2>/dev/null | rg -o --pcre2 "(?<=>).*?(?=<)" | /usr/bin/grep -E "RR|Total" | /usr/bin/grep -A 1 Open | rg -o "Remaining slots: \d+"
   if curl 'https://www.omnipong.com/T-tourney.asp?t=102&r=4084&h='  --compressed 2>/dev/null | rg -o --pcre2 "(?<=>).*?(?=<)" | /usr/bin/grep -E "RR|Total" | /usr/bin/grep -A 1 Open | rg -o "Remaining slots: \d+" | grep -v 0; then
     say "Open spot is available!!!"
