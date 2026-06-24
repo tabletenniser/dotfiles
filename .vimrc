@@ -263,7 +263,7 @@ nnoremap <leader>. :CtrlPTag<cr>
 
 " ==================== KEY REMAPPINGS ====================
 imap <c-]> <Plug>(copilot-next)
-imap <c-[> <Plug>(copilot-previous)
+imap <c-\> <Plug>(copilot-previous)
 
 map <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <Esc>:NERDTreeToggle<CR>

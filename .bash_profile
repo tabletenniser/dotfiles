@@ -29,8 +29,6 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 export PATH="$HOME/development/flutter/bin:$PATH"
-alias python3='python3.11'
-alias python='python3.11'
 alias pip='pip3.11'
 alias pip3='pip3.11'
 
